@@ -186,7 +186,7 @@ def basket_add(request, product_id):
     name = data.get('name')
     image = data.get('image')
     description = data.get('description')
-    print(price)
+    print(description)
 
     # Создание JSON-представления товара с комментарием и постером
     product_json = {
