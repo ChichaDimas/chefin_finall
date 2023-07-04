@@ -182,14 +182,20 @@ def basket_add(request, product_id):
     data = json.loads(request.body)
     comment = data.get('comment')
     product_poster = data.get('product_poster')
+    price = data.get('price')
     name = data.get('name')
-    print(name)
+    image = data.get('image')
+    description = data.get('description')
+    print(description)
 
     # Создание JSON-представления товара с комментарием и постером
     product_json = {
         'comment': comment,
         'product_poster': product_poster,
+        'price': price,
         'name': name,
+        'image': image,
+        'description': description,
     }
 
     # Получение или инициализация корзины в кеше

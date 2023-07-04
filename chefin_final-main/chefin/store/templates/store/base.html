@@ -231,12 +231,12 @@
         <div class="modal-content">
             <div class="modal-header1">
                 <div class="modal-header1">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel{{ product.id }}">{{ product.name }}</h5>
                 </div>
             </div>
             <div class="modal-body">
-                <img src="{{ product.image }}" alt="" class="modal_img">
-                <p class="description_modal">{{ product.description }}</p>
+                <img src="{{ product.image }}" alt="" class="modal_img{{ product.id }}">
+                <p class="description_modal{{ product.id }}">{{ product.description }}</p>
 
                 <!-- Поле для комментариев в модальном окне -->
                 <div class="form-group">
@@ -247,7 +247,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+                    <h5 class="modal-price{{ product.id }}">{{ product.price_for_view }} грн</h5>
                 <!-- Кнопка "Отправить" в модальном окне -->
                 <button type="button" class="btn btn-outline-success btn_modal" id="final_button"
                         data-product-id="{{ product.id }}">
@@ -277,12 +277,20 @@ document.addEventListener('DOMContentLoaded', function () {
     addToCartButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-            var element = document.querySelector('h5.modal-title#exampleModalLabel');
-            var name = element.textContent;
-            alert(name);
-
-            // Получение комментария
             var commentId = button.getAttribute('data-product-id');
+            var priceClass = '.modal-price' + commentId;
+            var priceElement = document.querySelector(priceClass);
+            var price = priceElement.textContent;
+            alert(price);
+            var nameElement = document.querySelector('h5.modal-title#exampleModalLabel' + commentId);
+            var name = nameElement.textContent;
+            var imageElement = document.querySelector('.modal_img' + commentId);
+            var image = imageElement.getAttribute('src');
+            var descriptionClass = '.description_modal' + commentId;
+            var descriptionElement = document.querySelector(descriptionClass);
+            var description = descriptionElement.textContent;
+            alert(description);
+            // Получение комментария
             var comment = document.getElementById('commentModal' + commentId).value;
 
             // Получение product_poster
@@ -296,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': '{{ csrf_token }}'
                 },
-                body: JSON.stringify({ comment: comment, product_poster: product_poster, name: name })
+                body: JSON.stringify({ comment: comment, product_poster: product_poster, price: price, name:name, image:image, description:description })
             })
             .then(function (response) {
                 if (response.ok) {
