@@ -215,7 +215,7 @@
                                    data-bs-target="#modal{{ product.id }}">
                                     Додати +
                                 </a>
-                               <p id="product_final_{{ product.id }}">{{ product.product_id }}</p>
+                               <p id="product_final_{{ product.id }}" style="display: none">{{ product.product_id }}</p>
                             </div>
                             <p class="card-text">{{ product.description }}</p>
                         </div>
@@ -281,7 +281,6 @@ document.addEventListener('DOMContentLoaded', function () {
             var priceClass = '.modal-price' + commentId;
             var priceElement = document.querySelector(priceClass);
             var price = priceElement.textContent;
-            alert(price);
             var nameElement = document.querySelector('h5.modal-title#exampleModalLabel' + commentId);
             var name = nameElement.textContent;
             var imageElement = document.querySelector('.modal_img' + commentId);
@@ -289,7 +288,6 @@ document.addEventListener('DOMContentLoaded', function () {
             var descriptionClass = '.description_modal' + commentId;
             var descriptionElement = document.querySelector(descriptionClass);
             var description = descriptionElement.textContent;
-            alert(description);
             // Получение комментария
             var comment = document.getElementById('commentModal' + commentId).value;
 
