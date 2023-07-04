@@ -1,0 +1,1168 @@
+Index: store/templates/store/base.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% load static %}\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Мой макет</title>\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6\" crossorigin=\"anonymous\">\r\n    <link rel=\"stylesheet\" href=\"{% static 'store/css/style.css' %}\">\r\n</head>\r\n\r\n<body>\r\n<div class=\"verx\">\r\n    <div class=\"dostavka_verx\">Доставка та оплата</div>\r\n    <div class=\"vakansiy_verx\">Вакансії</div>\r\n    <div class=\"pro_verx\">Про нас</div>\r\n    <div class=\"spivrobitnuchtvo_verx\">Співробітництво</div>\r\n\r\n    <div id=\"languageToggle\" onclick=\"toggleLanguage()\">UA</div>\r\n\r\n\r\n    <div class=\"korzuna_verx\">\r\n        <img class=\"corzina_img_verx\" src=\"{% static 'store/img/solar_cart-bold.svg' %}\">\r\n    </div>\r\n\r\n    <div class=\"search-panel\">\r\n        <input type=\"text\" placeholder=\"Пошук товарів\" id=\"search\">\r\n        <img src=\"{% static 'store/img/lupa.svg' %}\" alt=\"Search Icon\">\r\n    </div>\r\n\r\n    <div class=\"header\">\r\n        <div class=\"rounded-gradient-border container_logo\">\r\n            <div class=\"rounded-logo\">\r\n                <img class=\"imm\" src=\"{% static 'store/img/logoi.svg' %}\" alt=\"logo\">\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n<div class=\"call\">\r\n  <img class=\"call_img_verx\" src=\"{% static 'store/img/call.svg' %}\">\r\n</div>\r\n\r\n<script>\r\n  document.querySelector('.call').addEventListener('click', function() {\r\n    var phoneNumber1 = '+380660120101';\r\n    var phoneNumber2 = '+38 (066)';\r\n    var phoneNumber = '012-01-01'; // Здесь указываете нужный номер телефона\r\n\r\n    var telLink = 'tel:' + phoneNumber1;\r\n    window.location.href = telLink;\r\n  });\r\n</script>\r\n\r\n<div id=\"myModal\" class=\"modal\">\r\n  <div class=\"modal-content\">\r\n    <span class=\"close\" onclick=\"closeModal()\">&times;</span>\r\n    <h1 class=\"h1_zvorot\">Зворотній зв`язок</h1>\r\n    <form>\r\n      <input type=\"text\" id=\"name\" name=\"name\" placeholder=\"Введите ваше имя\" required>\r\n        <input type=\"email\" id=\"email\" name=\"email\" placeholder=\"Введите ваш email\" required>\r\n\r\n      <button type=\"submit\" id=\"otpavit\">Отправить</button>\r\n    </form>\r\n  </div>\r\n</div>\r\n\r\n\r\n    <div class=\"phone-numbers\">\r\n        <span class=\"orange-number1\">+38 (050) </span>\r\n        <span class=\"orange-number2\">+38 (066) </span>\r\n        <span class=\"white-number1\"> 012-01-01</span>\r\n        <span class=\"white-number2\"> 670-10-01</span>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n<div class=\"polosha\" id=\"polosha\">\r\n    <img src=\"{% static 'store/img/sushi.png' %}\" alt=\"\" srcset=\"\" class=\"sushi\" id=\"sushi11\">\r\n    <a class=\"sushi1\" id='sushi111'>Суші</a>\r\n    <img src=\"{% static 'store/img/Vector (2).png' %}\" alt=\"\" srcset=\"\" class=\"pizza\" id='pizza11'>\r\n    <div class=\"pizza1\" id=\"pizza111\">Пица</div>\r\n    <img src=\"{% static 'store/img/Vector (3).png' %}\" alt=\"\" srcset=\"\" class=\"salate\" id='salate11'>\r\n    <div class=\"salate1\" id=\"salate111\">Салати</div>\r\n    <img src=\"{% static 'store/img/Vector (4).png' %}\" alt=\"\" srcset=\"\" class=\"hot\" id='hot11'>\r\n    <div class=\"hot1\" id=\"hot111\">Горячие</div>\r\n    <img src=\"{% static 'store/img/Vector (5).png' %}\" alt=\"\" srcset=\"\" class=\"basis\" id='basis11'>\r\n    <div class=\"basis1\" id=\"basis111\">Основні</div>\r\n    <img src=\"{% static 'store/img/tarelkaess.png' %}\" alt=\"\" srcset=\"\" class=\"soup\" id='soup11'>\r\n    <div class=\"soup1\" id=\"soup111\">Супы</div>\r\n    <img src=\"{% static 'store/img/Vector (11).png' %}\" alt=\"\" srcset=\"\" class=\"snacks\" id='snacks11'>\r\n    <div class=\"snacks1\" id=\"snacks111\">Закуски</div>\r\n    <img src=\"{% static 'store/img/Vector (12).png' %}\" alt=\"\" srcset=\"\" class=\"garnish\" id='garnish11'>\r\n    <div class=\"garnish1\" id=\"garnish111\">Гарніри</div>\r\n    <img src=\"{% static 'store/img/Vector (13).png' %}\" alt=\"\" srcset=\"\" class=\"nopoi\" id='nopoi11'>\r\n    <div class=\"nopoi1\"  id=\"nopoi111\">Напої</div>\r\n    <img src=\"{% static 'store/img/puvo_ess.png' %}\" alt=\"\" srcset=\"\" class=\"puvo\" id='puvo11'>\r\n    <div class=\"puvo1\" id=\"puvo111\">Пиво</div>\r\n</div>\r\n\r\n<div class=\"container-fluid my-carousel my-image1\">\r\n    <div id=\"carouselExampleIndicators\" class=\"carousel slide carousel-fade\" data-bs-ride=\"carousel\"\r\n         data-bs-interval=\"5000\">\r\n        <div class=\"carousel-inner\">\r\n            <div class=\"carousel-item active\">\r\n                <img src=\"{% static 'store/img/photo (1)2.png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n            <div class=\"carousel-item\">\r\n                <img src=\"{% static 'store/img/photo (1).png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n            <div class=\"carousel-item\">\r\n                <img src=\"{% static 'store/img/photo (1).png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n            <div class=\"carousel-item\">\r\n                <img src=\"{% static 'store/img/photo (1).png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n        </div>\r\n        <div class=\"carousel-indicators carusel\" id=\"carusel_photo\">\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"0\"\r\n                    class=\"active rounded-circle\" aria-current=\"true\" aria-label=\"Slide 1\"></button>\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"1\"\r\n                    class=\"rounded-circle\" aria-label=\"Slide 2\"></button>\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"2\"\r\n                    class=\"rounded-circle\" aria-label=\"Slide 3\"></button>\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"3\"\r\n                    class=\"rounded-circle\" aria-label=\"Slide 4\"></button>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"new-popular\">\r\n    Нове та популярне\r\n</div>\r\n\r\n<div class=\"carta_tovara_nove\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Нове та популярне' %}\r\n                <div class=\"col-md-3\" id=\"novoe_carta\">\r\n                    <div class=\"carta_tovara_item\">\r\n                        <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                        <div class=\"card-body\">\r\n                            <h4 class=\"card-title my-title\">\r\n                                <a>{{ product.name }}</a>\r\n                            </h4>\r\n                            <div class=\"price_and_add\">\r\n                                <h5>{{ product.price_for_view }} грн</h5>\r\n                                <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                    Додати +\r\n                                </a>\r\n                            </div>\r\n                            <p class=\"card-text\">{{ product.description }}</p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"rolu\" id=\"rolu_opuckania\">\r\n    Роли\r\n</div>\r\n\r\n\r\n<div class=\"carta_tovara\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Роли' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"rolu_carta\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати +\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog my-modal\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"duvutusy_rolu\">\r\n    <a id=\"showAllButton\" class=\"btn_all\" href=\"{% url 'rolu' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\".carta_tovara_item\");\r\n    var showButton = document.getElementById(\"showAllButton\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 9; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 8) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n\r\n<div class=\"pizza_catagory\" id=\"pizza_id\">\r\n    Піца\r\n</div>\r\n\r\n<div class=\"carta_tovara_pizza\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Піца' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"carta_rolu\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog my-modal\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n<div class=\"duvutusy_pizzu\">\r\n    <a id=\"showAllButton1\" class=\"btn_all\" href=\"{% url 'pizza' %}\">Дивитись усі</a>\r\n</div>\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_rolu\");\r\n    var showButton = document.getElementById(\"showAllButton1\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 8; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 8) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n<div class=\"salate_catagory\" id=\"salate_id\">\r\n    Салати\r\n</div>\r\n\r\n<div class=\"carta_tovara_salate\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Салати' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"carta_salate\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n<div class=\"duvutusy_salaty\">\r\n    <a id=\"show_salate\" class=\"btn_all\" href=\"{% url 'salat' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_salate\");\r\n    var showButton = document.getElementById(\"show_salate\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 8; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 8) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n\r\n\r\n<div class=\"ocnove_catagory\" id=\"ocnove_id\">\r\n    Основні страви\r\n</div>\r\n<div class=\"carta_tovara_ocnove\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Основні страви' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"carta_ocnove\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n<div class=\"duvutusy_osnovni\">\r\n    <a id=\"show_ocnove\" class=\"btn_all\" href=\"{% url 'osnovni' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_ocnove\");\r\n    var showButton = document.getElementById(\"show_ocnove\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 8; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 8) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n<div class=\"supu_catagory\" id=\"supu_id\">\r\n    Супи\r\n</div>\r\n\r\n<div class=\"carta_tovara_supu\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Супи' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"carta_supu\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n<div class=\"duvutusy_supi\">\r\n    <a id=\"show_supu\" class=\"btn_all\" href=\"{% url 'soups' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_supu\");\r\n    var showButton = document.getElementById(\"show_supu\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 4; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length <= 4) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n<div class=\"zakysku_catagory\" id=\"zakysku_id\">\r\n    Закуски\r\n</div>\r\n\r\n<div class=\"carta_tovara_zakysku\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Закуски' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"carta_zakusky\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog my-modal\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"duvutusy_zakyski\">\r\n    <a id=\"show_zakusky\" class=\"btn_all\" href=\"{% url 'zakyski' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_zakusky\");\r\n    var showButton = document.getElementById(\"show_zakusky\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 8; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 8) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n<div class=\"garniru_catagory\" id=\"garniru_id\">\r\n    Гарніри\r\n</div>\r\n\r\n<div class=\"carta_tovara_garniru\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Гарніри' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"carta_garniru\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog my-modal\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n<div class=\"duvutusy_garniry\">\r\n    <a id=\"show_garniru\" class=\"btn_all\" href=\"{% url 'garniry' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_garniru\");\r\n    var showButton = document.getElementById(\"show_garniru\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 4; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 4) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n<div class=\"hotter_catagory\" id=\"hotter_id\">\r\n    Гарячі страви\r\n</div>\r\n\r\n<div class=\"carta_tovara_hotter\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Гарячі страви' %}\r\n                <div class=\"col-md-3\">\r\n                    <a data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                        <div class=\"carta_tovara_item\" id=\"carta_hotter\">\r\n                            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title my-title\">\r\n                                    {{ product.name }}\r\n                                </h4>\r\n                                <div class=\"price_and_add\">\r\n                                    <h5>{{ product.price_for_view }} грн</h5>\r\n                                    <a class=\"btn btn-outline-success btnnn\" href=\"#\">\r\n                                        Додати\r\n                                    </a>\r\n                                </div>\r\n                                <p class=\"card-text\">{{ product.description }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog my-modal\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"duvutusy_hot_str\">\r\n    <a id=\"show_hotter\" class=\"btn_all\" href=\"{% url 'hot' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_hotter\");\r\n    var showButton = document.getElementById(\"show_hotter\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 4; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 4) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n\r\n<div class=\"xolod_catagory\" id=\"xolod_id\">\r\n    Холодні напої\r\n</div>\r\n\r\n<div class=\"carta_tovara_xolod\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Холодні напої' %}\r\n                <div class=\"col-md-3\">\r\n                    <div class=\"carta_tovara_item\" id=\"carta_xolod\">\r\n                        <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                        <div class=\"card-body\">\r\n                            <h4 class=\"card-title my-title\">\r\n                                <a>{{ product.name }}</a>\r\n                            </h4>\r\n                            <div class=\"price_and_add\">\r\n                                <h5>{{ product.price_for_view }} грн</h5>\r\n                                <a class=\"btn btn-outline-success btnnn\" href=\"#\" data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                                    Додати\r\n                                </a>\r\n                            </div>\r\n                            <p class=\"card-text\">{{ product.description }}</p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog my-modal\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"duvutusy_cold_drinks\">\r\n    <a id=\"show_xolod\" class=\"btn_all\" href=\"{% url 'cold_drinks' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_xolod\");\r\n    var showButton = document.getElementById(\"show_xolod\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 8; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 8) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n<div class=\"puvo_catagory\" id=\"puvo_id\">\r\n    Розливне пиво\r\n</div>\r\n\r\n<div class=\"carta_tovara_puvo\">\r\n    <div class=\"row\">\r\n        {% for product in products %}\r\n            {% if product.category == 'Розливне пиво' %}\r\n                <div class=\"col-md-3\">\r\n                    <div class=\"carta_tovara_item\" id=\"carta_puvo\">\r\n                        <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"\">\r\n                        <div class=\"card-body\">\r\n                            <h4 class=\"card-title my-title\">\r\n                                <a>{{ product.name }}</a>\r\n                            </h4>\r\n                            <div class=\"price_and_add\">\r\n                                <h5>{{ product.price_for_view }} грн</h5>\r\n                                <a class=\"btn btn-outline-success btnnn\" href=\"#\" data-bs-toggle=\"modal\" data-bs-target=\"#modal{{ product.id }}\">\r\n                                    Додати\r\n                                </a>\r\n                            </div>\r\n                            <p class=\"card-text\">{{ product.description }}</p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <!-- Модальное окно -->\r\n                <div class=\"modal fade\" id=\"modal{{ product.id }}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog my-modal\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{ product.name }}</h5>\r\n                                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <img src=\"{{ product.image }}\" alt=\"\" style=\"width: 100%;\">\r\n                                <p>{{ product.description }}</p>\r\n                            </div>\r\n                            <div class=\"modal-footer\">\r\n                                <h5 class=\"modal-price\">{{ product.price_for_view }} грн</h5>\r\n                                <button type=\"button\" class=\"btn btn-outline-success\">Добавить в корзину</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            {% endif %}\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"duvutusy_piwo\">\r\n    <a id=\"show_puvo\" class=\"btn_all\" href=\"{% url 'beer' %}\">Дивитись усі</a>\r\n</div>\r\n\r\n<script>\r\n\r\n    var productItems = document.querySelectorAll(\"#carta_puvo\");\r\n    var showButton = document.getElementById(\"show_puvo\");\r\n\r\n    // Скрываем все элементы, кроме первых восьми\r\n    for (var i = 8; i < productItems.length; i++) {\r\n        productItems[i].classList.add(\"d-none\");\r\n    }\r\n\r\n    if (productItems.length < 8) {\r\n        showButton.remove(); // Показываем кнопку \"Дивитись усі\"\r\n    }\r\n\r\n</script>\r\n\r\n\r\n<div class=\"nuz\">\r\n    <div class=\"carta_sity\">Карта сайту</div>\r\n    <div class=\"polosha_orange_nuz\"></div>\r\n    <div class=\"doctavka_nuz\">Доставка та оплата</div>\r\n    <div class=\"pro_nac\">Про нас</div>\r\n    <div class=\"rolu_nuz\">Роли</div>\r\n    <div class=\"pizza_nuz\">Піца</div>\r\n    <div class=\"salate_nuz\">Салати</div>\r\n    <div class=\"ocnovni_nuz\">Основні страви</div>\r\n    <div class=\"garniru_nuz\">Гарніри</div>\r\n    <div class=\"supu_nuz\">Супи</div>\r\n    <div class=\"zakusku_nuz\">Закуски</div>\r\n    <div class=\"gariche_nuz\">Гаряче</div>\r\n    <div class=\"hold_nuz\">Холодні напої</div>\r\n    <div class=\"puvo_nuz\">Пиво</div>\r\n    <div class=\"contact_nuz\">Контакти</div>\r\n    <div class=\"polosha_orange_nuz2\"></div>\r\n    <div class=\"number_nuz\">+38 (050) 012-01-01</div>\r\n    <div class=\"number_nuz2\">+38 (066) 670-10-01</div>\r\n    <div class=\"email_nuz\">chef.in.ua@gmail.com</div>\r\n    <div class=\"adress_nuz\">Катерининська площа, Одеса, Одеська область, 65000</div>\r\n    <div class=\"prava_nuz\">© 2023 | Усі права захищені</div>\r\n    <header>\r\n        <div class=\"\">\r\n            <div class=\"header\">\r\n                <div class=\"rounded-gradient-border container_logo\">\r\n                    <div class=\"rounded-logo\">\r\n                        <img class=\"imm\" src=\"{% static 'store/img/logoi.svg' %}\" alt=\"logo\">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n    <img class=\"instagram\" src=\"{% static 'store/img/instagram.png' %}\" alt=\"logo\">\r\n    <img class=\"telegram\" src=\"{% static 'store/img/telegram.png' %}\" alt=\"logo\">\r\n    <img class=\"viber\" src=\"{% static 'store/img/viber.png' %}\" alt=\"logo\">\r\n    <img class=\"facebook\" src=\"{% static 'store/img/facebook.png' %}\" alt=\"logo\">\r\n</div>\r\n\r\n\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js\"\r\n        integrity=\"sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf\"\r\n        crossorigin=\"anonymous\"></script>\r\n<script src=\"{% static 'store/js/index.js' %}\"></script>\r\n\r\n\r\n<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\r\n<script>\r\n    $(document).ready(function () {\r\n        $(\".card-title.my-title a\").each(function () {\r\n            if ($(this).text().length > 21) {\r\n                $(this).addClass(\"short-name\");\r\n            }\r\n        });\r\n    });\r\n\r\n    function toggleLanguage() {\r\n  var toggle = document.getElementById(\"languageToggle\");\r\n  var currentLanguage = toggle.innerText;\r\n\r\n  if (currentLanguage === \"RU\") {\r\n    toggle.innerText = \"UA\";\r\n  } else {\r\n    toggle.innerText = \"RU\";\r\n  }\r\n}\r\n\r\n</script>\r\n\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/store/templates/store/base.html b/store/templates/store/base.html
+--- a/store/templates/store/base.html	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ b/store/templates/store/base.html	(date 1687708317368)
+@@ -143,9 +143,9 @@
+     <div class="row">
+         {% for product in products %}
+             {% if product.category == 'Нове та популярне' %}
+-                <div class="col-md-3" id="novoe_carta">
++                <div class="col-md-3">
+                     <div class="carta_tovara_item">
+-                        <img class="card-img-top" src="{{ product.image }}" alt="">
++                        <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                         <div class="card-body">
+                             <h4 class="card-title my-title">
+                                 <a>{{ product.name }}</a>
+@@ -158,6 +158,17 @@
+                             </div>
+                             <p class="card-text">{{ product.description }}</p>
+                         </div>
++                    </div>
++                </div>
++                <!-- Модальное окно -->
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -165,6 +176,17 @@
+     </div>
+ </div>
+ 
++<script>
++     function openModal(productId) {
++        var modal = document.getElementById("modal" + productId);
++        modal.style.display = "flex";
++    }
++
++    function closeModal(productId) {
++        var modal = document.getElementById("modal" + productId);
++        modal.style.display = "none";
++    }
++</script>
+ 
+ <div class="rolu" id="rolu_opuckania">
+     Роли
+@@ -176,9 +198,8 @@
+         {% for product in products %}
+             {% if product.category == 'Роли' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="rolu_carta">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+@@ -195,23 +216,16 @@
+                     </a>
+                 </div>
+ 
++
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog my-modal">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -222,9 +236,6 @@
+ 
+ 
+ 
+-
+-
+-
+ <div class="duvutusy_rolu">
+     <a id="showAllButton" class="btn_all" href="{% url 'rolu' %}">Дивитись усі</a>
+ </div>
+@@ -256,9 +267,8 @@
+         {% for product in products %}
+             {% if product.category == 'Піца' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="carta_rolu">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+@@ -276,22 +286,14 @@
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog my-modal">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -329,9 +331,8 @@
+         {% for product in products %}
+             {% if product.category == 'Салати' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="carta_salate">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+@@ -349,22 +350,14 @@
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name>">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -404,9 +397,8 @@
+         {% for product in products %}
+             {% if product.category == 'Основні страви' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="carta_ocnove">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+@@ -424,22 +416,14 @@
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -478,9 +462,8 @@
+         {% for product in products %}
+             {% if product.category == 'Супи' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="carta_supu">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+@@ -498,22 +481,14 @@
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -552,15 +527,14 @@
+         {% for product in products %}
+             {% if product.category == 'Закуски' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="carta_zakusky">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+                                 </h4>
+                                 <div class="price_and_add">
+-                                    <h5>{{ product.price_for_view }} грн</h5>
++                                    <div class="modal_name">{{ product.price_for_view }} грн</div>
+                                     <a class="btn btn-outline-success btnnn" href="#">
+                                         Додати
+                                     </a>
+@@ -572,22 +546,14 @@
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog my-modal">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                 <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -625,9 +591,8 @@
+         {% for product in products %}
+             {% if product.category == 'Гарніри' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="carta_garniru">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+@@ -645,22 +610,14 @@
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog my-modal">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -699,9 +656,8 @@
+         {% for product in products %}
+             {% if product.category == 'Гарячі страви' %}
+                 <div class="col-md-3">
+-                    <a data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+                         <div class="carta_tovara_item" id="carta_hotter">
+-                            <img class="card-img-top" src="{{ product.image }}" alt="">
++                            <img class="card-img-top"  onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
+                             <div class="card-body">
+                                 <h4 class="card-title my-title">
+                                     {{ product.name }}
+@@ -719,22 +675,14 @@
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog my-modal">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -773,40 +721,33 @@
+         {% for product in products %}
+             {% if product.category == 'Холодні напої' %}
+                 <div class="col-md-3">
+-                    <div class="carta_tovara_item" id="carta_xolod">
+-                        <img class="card-img-top" src="{{ product.image }}" alt="">
+-                        <div class="card-body">
+-                            <h4 class="card-title my-title">
+-                                <a>{{ product.name }}</a>
+-                            </h4>
+-                            <div class="price_and_add">
+-                                <h5>{{ product.price_for_view }} грн</h5>
+-                                <a class="btn btn-outline-success btnnn" href="#" data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+-                                    Додати
+-                                </a>
+-                            </div>
+-                            <p class="card-text">{{ product.description }}</p>
+-                        </div>
+-                    </div>
++                        <div class="carta_tovara_item" id="carta_xolod">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
++                            <div class="card-body">
++                                <h4 class="card-title my-title">
++                                    {{ product.name }}
++                                </h4>
++                                <div class="price_and_add">
++                                    <h5>{{ product.price_for_view }} грн</h5>
++                                    <a class="btn btn-outline-success btnnn" href="#">
++                                        Додати
++                                    </a>
++                                </div>
++                                <p class="card-text">{{ product.description }}</p>
++                            </div>
++                        </div>
++                    </a>
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog my-modal">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -815,6 +756,7 @@
+ </div>
+ 
+ 
++
+ <div class="duvutusy_cold_drinks">
+     <a id="show_xolod" class="btn_all" href="{% url 'cold_drinks' %}">Дивитись усі</a>
+ </div>
+@@ -844,40 +786,33 @@
+         {% for product in products %}
+             {% if product.category == 'Розливне пиво' %}
+                 <div class="col-md-3">
+-                    <div class="carta_tovara_item" id="carta_puvo">
+-                        <img class="card-img-top" src="{{ product.image }}" alt="">
+-                        <div class="card-body">
+-                            <h4 class="card-title my-title">
+-                                <a>{{ product.name }}</a>
+-                            </h4>
+-                            <div class="price_and_add">
+-                                <h5>{{ product.price_for_view }} грн</h5>
+-                                <a class="btn btn-outline-success btnnn" href="#" data-bs-toggle="modal" data-bs-target="#modal{{ product.id }}">
+-                                    Додати
+-                                </a>
+-                            </div>
+-                            <p class="card-text">{{ product.description }}</p>
+-                        </div>
+-                    </div>
++                        <div class="carta_tovara_item" id="carta_puvo">
++                            <img class="card-img-top" onclick="openModal('{{ product.id }}')" src="{{ product.image }}" alt="">
++                            <div class="card-body">
++                                <h4 class="card-title my-title">
++                                    {{ product.name }}
++                                </h4>
++                                <div class="price_and_add">
++                                    <h5>{{ product.price_for_view }} грн</h5>
++                                    <a class="btn btn-outline-success btnnn" href="#">
++                                        Додати
++                                    </a>
++                                </div>
++                                <p class="card-text">{{ product.description }}</p>
++                            </div>
++                        </div>
++                    </a>
+                 </div>
+ 
+                 <!-- Модальное окно -->
+-                <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+-                    <div class="modal-dialog my-modal">
+-                        <div class="modal-content">
+-                            <div class="modal-header">
+-                                <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
+-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-                            </div>
+-                            <div class="modal-body">
+-                                <img src="{{ product.image }}" alt="" style="width: 100%;">
+-                                <p>{{ product.description }}</p>
+-                            </div>
+-                            <div class="modal-footer">
+-                                <h5 class="modal-price">{{ product.price_for_view }} грн</h5>
+-                                <button type="button" class="btn btn-outline-success">Добавить в корзину</button>
+-                            </div>
+-                        </div>
++                 <div id="modal{{ product.id }}" class="modal-overlay">
++                    <div class="modal-content">
++                        <span class="modal-close" onclick="closeModal('{{ product.id }}')">&times;</span>
++                        <div class="modal_name">{{ product.name }}</div>
++                        <img src="{{ product.image }}" alt="" class="model_img">
++                        <p>{{ product.description }}</p>
++                        <h5 class="modal-price modal_price">{{ product.price_for_view }} грн</h5>
++                        <button type="button" class="btn btn-outline-success modal_btn">Додати у кошик {{ product.price_for_view }} грн</button>
+                     </div>
+                 </div>
+             {% endif %}
+@@ -885,7 +820,6 @@
+     </div>
+ </div>
+ 
+-
+ <div class="duvutusy_piwo">
+     <a id="show_puvo" class="btn_all" href="{% url 'beer' %}">Дивитись усі</a>
+ </div>
+Index: store/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.urls import path\r\nfrom .views import *\r\n\r\nurlpatterns = [\r\n    path('rolu', rolu, name='rolu'),\r\n    path('pizza', pizza, name='pizza'),\r\n    path('salat', salat, name='salat'),\r\n    path('osnovni', osnovni, name='osnovni'),\r\n    path('soups', soups, name='soups'),\r\n    path('zakyski', zakyski, name='zakyski'),\r\n    path('garniry', garniry, name='garniry'),\r\n    path('hot', hot, name='hot'),\r\n    path('cold_drinks', cold_drinks, name='cold_drinks'),\r\n    path('beer', beer, name='beer'),\r\n\r\n    path('dostavka_ta_oplata', dostavka_ta_oplata, name='dostavka_ta_oplata'),\r\n    path('basket', basket, name='basket'),\r\n]\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/store/urls.py b/store/urls.py
+--- a/store/urls.py	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ b/store/urls.py	(date 1687708413831)
+@@ -15,4 +15,5 @@
+ 
+     path('dostavka_ta_oplata', dostavka_ta_oplata, name='dostavka_ta_oplata'),
+     path('basket', basket, name='basket'),
++    path('product/<str:product_name>/', product_detail, name='product_detail'),
+ ]
+Index: store/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nfrom chefin.settings import POSTER_POS_API_KEY\r\nfrom django.shortcuts import render\r\nfrom .helpers import *\r\nfrom .models import *\r\nimport requests\r\n\r\n\r\n\r\n\r\ndef menu(request):\r\n    api_key = POSTER_POS_API_KEY\r\n    fill_database(api_key)\r\n\r\n    query = request.GET.get('query')\r\n    category = request.GET.get('category')\r\n\r\n    products = Product.objects.all()\r\n\r\n\r\n    if query:\r\n        products = products.filter(name__icontains=query)\r\n\r\n    if category:\r\n        products = products.filter(category__icontains=category)\r\n\r\n    context = {\r\n        'title': 'Chefin',\r\n        'products': products,\r\n    }\r\n\r\n    return render(request, 'store/base.html', context)\r\n\r\ndef rolu(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Роли',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/rolu.html', context)\r\n\r\n\r\ndef pizza(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Піца',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/pizza.html', context)\r\n\r\ndef salat(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Салати',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/salat.html', context)\r\n\r\ndef osnovni(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Основні страви',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/osnovni.html', context)\r\n\r\ndef soups(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Супи',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/soups.html', context)\r\n\r\n\r\ndef zakyski(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Закуски',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/zakyski.html', context)\r\n\r\n\r\ndef garniry(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Гарніри',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/garniry.html', context)\r\n\r\ndef hot(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Гарячі страви',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/hot.html', context)\r\n\r\ndef cold_drinks(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Холодні напої',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/cold_drinks.html', context)\r\ndef beer(requests):\r\n    products = Product.objects.all()\r\n\r\n    context = {\r\n        'title': 'Розливне пиво',\r\n        'products': products,\r\n    }\r\n\r\n    return render(requests, 'store/beer.html', context)\r\n\r\n\r\ndef dostavka_ta_oplata(requests):\r\n\r\n    context = {\r\n        'title': 'Доставка та оплата',\r\n\r\n    }\r\n\r\n    return render(requests, 'store/dostavka_ta_oplata.html', context)\r\n\r\n\r\ndef basket(requests):\r\n    context = {\r\n        'title': 'Корзина',\r\n\r\n    }\r\n\r\n    return render(requests, 'store/basket.html', context)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/store/views.py b/store/views.py
+--- a/store/views.py	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ b/store/views.py	(date 1687708420158)
+@@ -1,6 +1,6 @@
+ 
+ from chefin.settings import POSTER_POS_API_KEY
+-from django.shortcuts import render
++from django.shortcuts import render, get_object_or_404
+ from .helpers import *
+ from .models import *
+ import requests
+@@ -151,3 +151,7 @@
+     }
+ 
+     return render(requests, 'store/basket.html', context)
++
++def product_detail(request, product_name):
++    product = get_object_or_404(Product, name=product_name)
++    return render(request, 'store/product_detail.html', {'product': product})
+Index: static/store/css/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nbody {\r\n    background: rgba(0, 0, 0, 0.92);\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n.container_logo {\r\n    position: relative;\r\n\r\n    width: 20%;\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: center;\r\n\r\n    height: 230px;\r\n    padding: 20px;\r\n\r\n    background: rgba(0, 0, 0, 0.61);\r\n\r\n\r\n}\r\n\r\n\r\n.rounded-gradient-border {\r\n    position: relative;\r\n    border-radius: 0px 130px 130px 0px;\r\n    box-shadow: 0 0 0 1px;\r\n    outline: 1px solid #5e5e5e;\r\n}\r\n\r\n\r\n.my-container {\r\n    position: absolute;\r\n    width: 1920px;\r\n    height: 225px;\r\n    left: 0px;\r\n    top: 0px;\r\n    background: #000000;\r\n}\r\n\r\n\r\n.my-image {\r\n    position: relative;\r\n    margin-left: auto;\r\n    right: -60%;\r\n    height: 80%;\r\n    top: 10%;\r\n\r\n\r\n    background-color: #fcfafa;\r\n    background-blend-mode: multiply;\r\n}\r\n\r\n\r\n.rectangle_one {\r\n    position: absolute;\r\n\r\n    width: 25%;\r\n    height: 100%;\r\n    background: rgb(11, 11, 11);\r\n    box-shadow: 0px 4px 12px rgb(248, 245, 245);\r\n    border-radius: 0px 1000px 1000px 0px;\r\n}\r\n\r\n\r\n.image-button {\r\n    position: absolute;\r\n    width: 50px;\r\n    height: 50px;\r\n    top: 18%;\r\n    left: 290%;\r\n    border: 1px solid #E1643C;\r\n    border-radius: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.image-button img {\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n}\r\n\r\n\r\n.black {\r\n    box-sizing: border-box;\r\n\r\n    position: absolute;\r\n    width: 20%;\r\n    height: 20%;\r\n    left: 1%;\r\n    top: 1.92%;\r\n    bottom: 96.15%;\r\n\r\n    background: rgba(0, 0, 0, 0.61);\r\n    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);\r\n    border-radius: 1000px 0px 0px 1000px;\r\n    transform: rotate(180deg);\r\n}\r\n\r\n.photo1 {\r\n    height: 65%;\r\n    width: 90%;\r\n    position: absolute;\r\n    top: 35%;\r\n    left: 5%;\r\n}\r\n\r\n.polosha {\r\n    position: absolute;\r\n    width: 70%;\r\n    height: 10%;\r\n    left: 15%;\r\n    top: 101%;\r\n    z-index: 2;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    backdrop-filter: blur(8.5px);\r\n    /* Note: backdrop-filter has minimal browser support */\r\n\r\n    border-radius: 1000px;\r\n}\r\n\r\n.sushi {\r\n    width: 2%;\r\n    position: absolute;\r\n    left: 4.5%;\r\n    top: 15%;\r\n}\r\n\r\n.sushi1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 4%;\r\n}\r\n\r\n.pizza {\r\n    width: 2%;\r\n    position: absolute;\r\n    left: 13.5%;\r\n    top: 20%;\r\n\r\n}\r\n\r\n.pizza1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 13%;\r\n}\r\n\r\n.salate {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 23.5%;\r\n}\r\n\r\n.salate1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 22%;\r\n}\r\n\r\n.hot {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 33.5%;\r\n}\r\n\r\n.hot1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 32%;\r\n}\r\n\r\n.basis {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 43.5%;\r\n}\r\n\r\n.basis1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 42%;\r\n}\r\n\r\n.soup {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 53.5%;\r\n\r\n}\r\n\r\n.soup1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 52.5%;\r\n}\r\n\r\n.snacks {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 63%;\r\n}\r\n\r\n.snacks1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 62%;\r\n}\r\n\r\n.garnish {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 73.5%;\r\n}\r\n\r\n.garnish1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 72%;\r\n}\r\n\r\n.nopoi {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 15%;\r\n    left: 83.5%;\r\n}\r\n\r\n.nopoi1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 82.5%;\r\n}\r\n\r\n.puvo {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 92.5%;\r\n}\r\n\r\n.puvo1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 92%;\r\n}\r\n\r\n\r\n.my-image1 {\r\n    position: absolute;\r\n    top: 36%;\r\n    width: 90%;\r\n\r\n    left: 5%;\r\n\r\n}\r\n\r\n.carusel {\r\n    position: absolute;\r\n    top: 20%;\r\n    left: -85%;\r\n}\r\n\r\n.carousel-indicators.carusel button {\r\n    width: 20px;\r\n    height: 20px;\r\n\r\n}\r\n\r\n\r\n.btn_all {\r\n    display: inline-block;\r\n    /*background-color: #383636;*/\r\n    color: #E1643C;\r\n    text-decoration: none;\r\n    padding: 10px 20px;\r\n    border-radius: 0;\r\n\r\n    font-style: normal;\r\n    font-weight: 450;\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n\r\n\r\n}\r\n\r\n.btn_all:hover {\r\n    opacity: 0.8;\r\n    color: mediumseagreen;\r\n}\r\n\r\n.btn_all:after {\r\n    content: \"\\2193\";\r\n    margin-left: 5px;\r\n}\r\n\r\n\r\n.btn_all_1 {\r\n    display: inline-block;\r\n    /*background-color: #383636;*/\r\n    color: #E1643C;\r\n    text-decoration: none;\r\n    padding: 10px 20px;\r\n    border-radius: 0;\r\n\r\n\r\n    font-style: normal;\r\n    font-weight: 450;\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n}\r\n\r\n.btn_all_1:hover {\r\n    opacity: 0.8;\r\n    color: mediumseagreen;\r\n}\r\n\r\n.btn_all_1:after {\r\n    content: \"\\2191\";\r\n    margin-left: 5px;\r\n}\r\n\r\n\r\n.nuz {\r\n    width: 100%;\r\n    height: 60%;\r\n    position: absolute;\r\n    top: 1720%;\r\n    background-color: #000000;\r\n}\r\n\r\n.carta_sity {\r\n    position: absolute;\r\n    top: 10%;\r\n    left: 30%;\r\n    font-style: normal;\r\n    font-weight: 450;\r\n    font-size: 24px;\r\n    line-height: 30px;\r\n    color: #373737;\r\n}\r\n\r\n.polosha_orange_nuz {\r\n    position: absolute;\r\n    top: 23%;\r\n    left: 30%;\r\n    width: 88px;\r\n    height: 3px;\r\n    background: #E1643C;\r\n}\r\n\r\n.doctavka_nuz {\r\n    position: absolute;\r\n    top: 32%;\r\n    left: 30%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.pro_nac {\r\n    position: absolute;\r\n    top: 42%;\r\n    left: 30%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.rolu_nuz {\r\n    position: absolute;\r\n    top: 52%;\r\n    left: 30%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.pizza_nuz {\r\n    position: absolute;\r\n    top: 62%;\r\n    left: 30%;\r\n    width: 191px;\r\n    height: 15px;\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.salate_nuz {\r\n    position: absolute;\r\n    top: 72%;\r\n    left: 30%;\r\n    width: 191px;\r\n    height: 15px;\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.ocnovni_nuz {\r\n    position: absolute;\r\n    top: 42%;\r\n    left: 50%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.garniru_nuz {\r\n    position: absolute;\r\n    top: 32%;\r\n    left: 50%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.supu_nuz {\r\n    position: absolute;\r\n    top: 52%;\r\n    left: 50%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.zakusku_nuz {\r\n    position: absolute;\r\n    top: 62%;\r\n    left: 50%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.gariche_nuz {\r\n    position: absolute;\r\n    top: 72%;\r\n    left: 50%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.hold_nuz {\r\n    position: absolute;\r\n    top: 82%;\r\n    left: 50%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.puvo_nuz {\r\n    position: absolute;\r\n    top: 82%;\r\n    left: 30%;\r\n    width: 191px;\r\n    height: 15px;\r\n\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.contact_nuz {\r\n    position: absolute;\r\n    top: 10%;\r\n    left: 70%;\r\n    font-style: normal;\r\n    font-weight: 450;\r\n    font-size: 24px;\r\n    line-height: 30px;\r\n    color: #373737;\r\n}\r\n\r\n.polosha_orange_nuz2 {\r\n    position: absolute;\r\n    top: 23%;\r\n    left: 70%;\r\n    width: 88px;\r\n    height: 3px;\r\n    background: #E1643C;\r\n}\r\n\r\n.number_nuz {\r\n    width: 413px;\r\n    height: 15px;\r\n    position: absolute;\r\n    top: 30%;\r\n    left: 70%;\r\n\r\n    color: #FFFFFF;\r\n    white-space: nowrap;\r\n}\r\n\r\n.number_nuz2 {\r\n    width: 413px;\r\n    height: 15px;\r\n    position: absolute;\r\n    top: 40%;\r\n    left: 70%;\r\n\r\n    color: #FFFFFF;\r\n    white-space: nowrap;\r\n}\r\n\r\n.email_nuz {\r\n    width: 413px;\r\n    height: 15px;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 70%;\r\n\r\n    color: #FFFFFF;\r\n    white-space: nowrap;\r\n}\r\n\r\n.adress_nuz {\r\n    width: 413px;\r\n    height: 15px;\r\n    position: absolute;\r\n    top: 60%;\r\n    left: 70%;\r\n\r\n    color: #FFFFFF;\r\n    white-space: nowrap;\r\n}\r\n\r\n.instagram {\r\n    position: absolute;\r\n    top: 72%;\r\n    left: 6%;\r\n}\r\n\r\n.telegram {\r\n    position: absolute;\r\n    top: 72%;\r\n    left: 10%;\r\n}\r\n\r\n.viber {\r\n    position: absolute;\r\n    top: 72%;\r\n    left: 14%;\r\n}\r\n\r\n.facebook {\r\n    position: absolute;\r\n    top: 72%;\r\n    left: 18%;\r\n}\r\n\r\n.prava_nuz {\r\n    position: absolute;\r\n    top: 82%;\r\n    left: 6%;\r\n}\r\n\r\n\r\n.dostavka_verx {\r\n    position: absolute;\r\n    top: 7%;\r\n    left: 43%;\r\n    color: #FFFFFF;\r\n    width: 140px;\r\n    height: 15px;\r\n    white-space: nowrap;\r\n\r\n}\r\n\r\n\r\n.vakansiy_verx {\r\n    position: absolute;\r\n    top: 7%;\r\n    left: 56%;\r\n    color: #FFFFFF;\r\n    width: 140px;\r\n    height: 15px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.pro_verx {\r\n    position: absolute;\r\n    top: 7%;\r\n    left: 63%;\r\n    color: #FFFFFF;\r\n    width: 140px;\r\n    height: 15px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.spivrobitnuchtvo_verx {\r\n    position: absolute;\r\n    top: 7%;\r\n    left: 70%;\r\n    color: #FFFFFF;\r\n    width: 140px;\r\n    height: 15px;\r\n    white-space: nowrap;\r\n}\r\n\r\n#languageToggle {\r\n    box-sizing: border-box;\r\n    position: absolute;\r\n    top: 5%;\r\n    left: 82%;\r\n    width: 96px;\r\n    height: 46px;\r\n    background: #1c1c1c;\r\n    color: #ffffff;\r\n    box-shadow: 0px 4px 4px rgba(187, 187, 187, 0.08);\r\n    border-radius: 1000px;\r\n    outline: 1px solid #e1643c;\r\n    line-height: 46px; /* Aligns the text vertically in the center */\r\n    text-align: center; /* Aligns the text horizontally in the center */\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.korzuna_verx {\r\n    position: absolute;\r\n    left: 91%;\r\n    top: 5%;\r\n    background: #1c1c1c;\r\n    outline: 1px solid #E1643C;\r\n    width: 45.25px; /* Размер изображения */\r\n    height: 45.25px; /* Размер изображения */\r\n    border-radius: 50%; /* Создаем круглую форму */\r\n    display: flex; /* Располагаем содержимое по центру по горизонтали и вертикали */\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.corzina_img_verx {\r\n    width: 60%;\r\n    height: 60%;\r\n}\r\n\r\n.search-panel {\r\n    position: absolute;\r\n    width: 408px;\r\n    height: 46px;\r\n    left: 43%;\r\n    top: 20%;\r\n    background: rgba(255, 255, 255, 0.02);\r\n    border-radius: 22px;\r\n\r\n}\r\n\r\n\r\nimg[alt=\"Search Icon\"] {\r\n    position: absolute;\r\n    margin-left: -50px;\r\n    z-index: 9999;\r\n    /*border-radius: 50%;*/\r\n    /*outline: 1px solid #E1643C;*/\r\n}\r\n\r\n\r\n.search-panel input[type=\"text\"] {\r\n    width: 90%;\r\n    height: 100%;\r\n    background: #1c1c1c;\r\n    box-shadow: 0 0 0 1px;\r\n    outline: 1px solid #a6a3a3;\r\n    border-radius: 22px;\r\n    color: #cbc9c9;\r\n    padding-left: 15px; /* Adjust the value as needed */\r\n}\r\n\r\n\r\n.call {\r\n    position: absolute;\r\n    left: 70%;\r\n    top: 20%;\r\n    background: #1c1c1c;\r\n    outline: 1px solid #E1643C;\r\n    width: 45.25px; /* Размер изображения */\r\n    height: 45.25px; /* Размер изображения */\r\n    border-radius: 50%; /* Создаем круглую форму */\r\n    display: flex; /* Располагаем содержимое по центру по горизонтали и вертикали */\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.call_img_verx {\r\n    width: 60%;\r\n    height: 60%;\r\n}\r\n\r\n.phone-numbers {\r\n    /*font-size: 18px;*/\r\n\r\n}\r\n\r\n.orange-number1 {\r\n    position: absolute;\r\n    color: #E1643C;\r\n    left: 75%;\r\n    top: 20%;\r\n}\r\n\r\n.orange-number2 {\r\n    position: absolute;\r\n    color: #E1643C;\r\n    left: 75%;\r\n    top: 23%;\r\n\r\n}\r\n\r\n.white-number1 {\r\n    color: white;\r\n    position: absolute;\r\n    left: 80%;\r\n    top: 20%;\r\n}\r\n\r\n.white-number2 {\r\n    color: white;\r\n    position: absolute;\r\n    left: 80%;\r\n    top: 23%;\r\n}\r\n\r\n.verx {\r\n    background-color: black;\r\n}\r\n\r\n\r\n.dodaty {\r\n\r\n    position: absolute;\r\n    width: 117px;\r\n    height: 40px;\r\n    left: 60%;\r\n    top: 85%;\r\n\r\n    background: #E1643C;\r\n    border-radius: 6px;\r\n}\r\n\r\n\r\n.carta_tovara {\r\n    position: absolute;\r\n    margin-top: 88%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    border-radius: 14px;\r\n\r\n}\r\n\r\n.custom-container {\r\n    position: absolute;\r\n    margin-top: 88%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    border-radius: 14px;\r\n}\r\n\r\n\r\n.carta_tovara_item .card-title {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.card-title.my-title a.short-name {\r\n    font-size: 18px;\r\n    line-height: 32px;\r\n    color: #FFFFFF;\r\n    text-decoration: none;\r\n}\r\n\r\n\r\n.carta_tovara_item .card-text {\r\n    font-size: 18px;\r\n    line-height: 22px;\r\n    margin-top: -55%;\r\n    color: #ADADAD;\r\n    font-family: \"Arial\", sans-serif;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n.carta_tovara_item {\r\n    border-radius: 14px 14px 14px 14px;\r\n    margin-bottom: 3rem;\r\n    border: 2px solid gray;\r\n    width: 305px;\r\n    height: 450px;\r\n\r\n    /*background: rgba(255, 255, 255, 1)*/\r\n}\r\n\r\n.carta_tovara_item .card-img-top {\r\n    border-radius: 14px 14px 0px 0px;\r\n    width: 302px;\r\n    height: 215px;\r\n}\r\n\r\n\r\n.price_and_add {\r\n    margin-top: 45%;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    font-size: 24px;\r\n    color: #E1643C;\r\n}\r\n\r\n.btnnn {\r\n    border-radius: 8px;\r\n\r\n    font-style: normal;\r\n    font-weight: 450;\r\n    font-size: 18px;\r\n    line-height: 22px;\r\n    /* identical to box height, or 122% */\r\n    background-color: #E1643C;\r\n    color: #FFFFFF;\r\n    border: 3px solid orangered; /* Золотая обводка */\r\n\r\n}\r\n\r\n\r\n.pizza_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 375%;\r\n\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.new-popular {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 115%;\r\n    font-family: 'Futura PT';\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_nove {\r\n    position: absolute;\r\n    margin-top: 45%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.rolu {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 205%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_pizza {\r\n    position: absolute;\r\n    margin-top: 170%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n\r\n}\r\n\r\n.salate_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 545%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_salate {\r\n    position: absolute;\r\n    margin-top: 250%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.ocnove_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 712%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_ocnove {\r\n    position: absolute;\r\n    margin-top: 330%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.supu_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 880%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_supu {\r\n    position: absolute;\r\n    margin-top: 410%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.zakysku_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 980%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_zakysku {\r\n    position: absolute;\r\n    margin-top: 458%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.garniru_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 1155%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_garniru {\r\n    position: absolute;\r\n    margin-top: 540%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.hotter_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 1255%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_hotter {\r\n    position: absolute;\r\n\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n    margin-top: 588%;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.xolod_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 1360%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_xolod {\r\n    position: absolute;\r\n    margin-top: 638%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n.puvo_catagory {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 1535%;\r\n\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta_tovara_puvo {\r\n    position: absolute;\r\n    margin-top: 721%;\r\n    margin-left: 2cm;\r\n    margin-right: 2cm;\r\n\r\n\r\n    /*background: rgba(255, 255, 255, 0.03);*/\r\n    border-radius: 14px;\r\n}\r\n\r\n\r\n.duvutusy_rolu {\r\n    position: absolute;\r\n    top: 365%;\r\n    left: 43%;\r\n\r\n}\r\n\r\n.duvutusy_pizzu {\r\n    position: absolute;\r\n    top: 537%;\r\n    left: 43%;\r\n    z-index: 11;\r\n}\r\n\r\n.duvutusy_salaty {\r\n    position: absolute;\r\n    top: 705%;\r\n    left: 43%;\r\n    z-index: 11;\r\n}\r\n\r\n.duvutusy_osnovni {\r\n    position: absolute;\r\n    top: 875%;\r\n    left: 43%;\r\n    z-index: 11;\r\n}\r\n\r\n.duvutusy_supi {\r\n    position: absolute;\r\n    top: 960%;\r\n    left: 41.5%;\r\n    z-index: 11;\r\n\r\n}\r\n\r\n.duvutusy_zakyski {\r\n    position: absolute;\r\n    top: 1145%;\r\n    left: 43%;\r\n    z-index: 11;\r\n}\r\n\r\n.duvutusy_garniry {\r\n    position: absolute;\r\n    top: 1240%;\r\n    left: 41.5%;\r\n    z-index: 11;\r\n}\r\n\r\n.duvutusy_hot_str {\r\n    position: absolute;\r\n    top: 1340%;\r\n    left: 41.5%;\r\n    z-index: 11;\r\n}\r\n\r\n.duvutusy_cold_drinks {\r\n    position: absolute;\r\n    top: 1523%;\r\n    left: 43%;\r\n    z-index: 11;\r\n}\r\n\r\n.duvutusy_piwo {\r\n    position: absolute;\r\n    top: 1700%;\r\n    left: 43%;\r\n    z-index: 11;\r\n}\r\n\r\n.modal {\r\n    display: none;\r\n    position: fixed;\r\n    z-index: 1;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: auto;\r\n    background-color: rgba(0, 0, 0, 0.5);\r\n}\r\n\r\n.modal-content {\r\n    background-color: #141414;\r\n    margin: 5% auto;\r\n    padding: 20px;\r\n    border: 1px solid #888;\r\n    width: 60%;\r\n    height: 70%;\r\n    border-radius: 50px;\r\n\r\n}\r\n\r\n.close {\r\n    color: #aaa;\r\n    float: right;\r\n    font-size: 28px;\r\n    font-weight: bold;\r\n    cursor: pointer;\r\n}\r\n\r\n.close:hover,\r\n.close:focus {\r\n    color: black;\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n}\r\n\r\n.h1_zvorot {\r\n    position: absolute;\r\n    top: 10%;\r\n}\r\n\r\n#name {\r\n    position: absolute;\r\n    top: 30%;\r\n    left: 50%;\r\n}\r\n\r\n#email {\r\n    position: absolute;\r\n    top: 50%;\r\n}\r\n\r\n#otpavit {\r\n    position: absolute;\r\n    top: 70%;\r\n}\r\n\r\n    .modal-content {\r\n    background-color: white; /* Устанавливаем фон модального окна на белый */\r\n}\r\n.modal {\r\n    z-index: 9999; /* Устанавливаем высокий z-index для модального окна */\r\n}\r\n.modal-dialog {\r\n    max-width: 800px; /* Устанавливает максимальную ширину модального окна */\r\n    width: 100%; /* Занимает 100% ширины доступной области */\r\n}\r\n.my-modal .modal-body img {\r\n  max-width: 100%;\r\n  max-height: 400px; /* Замените значение на желаемую высоту */\r\n}\r\n\r\n@media (min-width: 1500px) and (min-height: 750px) {\r\n\r\n\r\n    .pizza_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 352%;\r\n\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .new-popular {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 112%;\r\n        font-family: 'Futura PT';\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_nove {\r\n        position: absolute;\r\n        margin-top: 46%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .rolu {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 197%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_pizza {\r\n        position: absolute;\r\n        margin-top: 165%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n\r\n    }\r\n\r\n    .salate_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 507%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_salate {\r\n        position: absolute;\r\n        margin-top: 242%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .ocnove_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 662%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_ocnove {\r\n        position: absolute;\r\n        margin-top: 319%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .supu_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 818%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_supu {\r\n        position: absolute;\r\n        margin-top: 396%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .zakysku_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 907%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_zakysku {\r\n        position: absolute;\r\n        margin-top: 440%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .garniru_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 1062%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_garniru {\r\n        position: absolute;\r\n        margin-top: 517%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .hotter_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 1150%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_hotter {\r\n        position: absolute;\r\n\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n        margin-top: 561%;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .xolod_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 1239%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_xolod {\r\n        position: absolute;\r\n        margin-top: 605%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .puvo_catagory {\r\n        position: absolute;\r\n        left: 5%;\r\n        top: 1394%;\r\n\r\n        font-style: normal;\r\n        font-weight: 700;\r\n        font-size: 65px;\r\n        line-height: 83px;\r\n        color: #FFFFFF;\r\n        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n    }\r\n\r\n    .carta_tovara_puvo {\r\n        position: absolute;\r\n        margin-top: 682%;\r\n        margin-left: 2cm;\r\n        margin-right: 2cm;\r\n\r\n\r\n        /*background: rgba(255, 255, 255, 0.03);*/\r\n        border-radius: 14px;\r\n    }\r\n\r\n    .nuz {\r\n        width: 100%;\r\n        height: 60%;\r\n        position: absolute;\r\n        top: 1550%;\r\n        background-color: #000000;\r\n    }\r\n\r\n    .duvutusy_rolu {\r\n        position: absolute;\r\n        top: 335%;\r\n        left: 43%;\r\n\r\n    }\r\n\r\n    .duvutusy_pizzu {\r\n        position: absolute;\r\n        top: 490%;\r\n        left: 43%;\r\n        z-index: 11;\r\n    }\r\n\r\n    .duvutusy_salaty {\r\n        position: absolute;\r\n        top: 645%;\r\n        left: 43%;\r\n        z-index: 11;\r\n    }\r\n\r\n    .duvutusy_osnovni {\r\n        position: absolute;\r\n        top: 800%;\r\n        left: 43%;\r\n        z-index: 11;\r\n    }\r\n\r\n    .duvutusy_supi {\r\n        position: absolute;\r\n        top: 920%;\r\n        left: 41.5%;\r\n        z-index: 11;\r\n\r\n    }\r\n\r\n    .duvutusy_zakyski {\r\n        position: absolute;\r\n        top: 1045%;\r\n        left: 43%;\r\n        z-index: 11;\r\n    }\r\n\r\n    .duvutusy_garniry {\r\n        position: absolute;\r\n        top: 1135%;\r\n        left: 41.5%;\r\n        z-index: 11;\r\n    }\r\n\r\n    .duvutusy_hot_str {\r\n        position: absolute;\r\n        top: 1225%;\r\n        left: 41.5%;\r\n        z-index: 11;\r\n    }\r\n\r\n    .duvutusy_cold_drinks {\r\n        position: absolute;\r\n        top: 1380%;\r\n        left: 43%;\r\n        z-index: 11;\r\n    }\r\n\r\n    .duvutusy_piwo {\r\n        position: absolute;\r\n        top: 1535%;\r\n        left: 43%;\r\n        z-index: 11;\r\n    }\r\n    .modal-content {\r\n    background-color: white; /* Устанавливаем фон модального окна на белый */\r\n}\r\n.modal {\r\n    z-index: 9999; /* Устанавливаем высокий z-index для модального окна */\r\n}\r\n.modal-dialog {\r\n    max-width: 800px; /* Устанавливает максимальную ширину модального окна */\r\n    width: 100%; /* Занимает 100% ширины доступной области */\r\n}\r\n.my-modal .modal-body img {\r\n  max-width: 100%;\r\n  max-height: 400px; /* Замените значение на желаемую высоту */\r\n}\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/static/store/css/style.css b/static/store/css/style.css
+--- a/static/store/css/style.css	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ b/static/store/css/style.css	(date 1687697742120)
+@@ -1247,6 +1247,7 @@
+     height: 70%;
+     border-radius: 50px;
+ 
++
+ }
+ 
+ .close {
+@@ -1637,21 +1638,66 @@
+         left: 43%;
+         z-index: 11;
+     }
++.modal-overlay {
++        position: fixed;
++        top: 0;
++        left: 0;
++        width: 100%;
++        height: 100%;
++        background-color: rgba(0, 0, 0, 0.6);
++        display: none;
++        align-items: center;
++        justify-content: center;
++        z-index: 9999;
++    }
++
+     .modal-content {
+-    background-color: white; /* Устанавливаем фон модального окна на белый */
+-}
+-.modal {
+-    z-index: 9999; /* Устанавливаем высокий z-index для модального окна */
+-}
+-.modal-dialog {
+-    max-width: 800px; /* Устанавливает максимальную ширину модального окна */
+-    width: 100%; /* Занимает 100% ширины доступной области */
+-}
+-.my-modal .modal-body img {
+-  max-width: 100%;
+-  max-height: 400px; /* Замените значение на желаемую высоту */
+-}
+-
++        background-color: #232222;
++        padding: 20px;
++        max-width: 875px;
++        width: 100%;
++        max-height: 60vh;
++        overflow-y: auto;
++        text-align: center;
++        border-radius: 20px;
++    }
++
++    .modal-close {
++        position: absolute;
++        top: 10px;
++        right: 10px;
++        font-size: 34px;
++        cursor: pointer;
++        color: #FFFFFF;
++    }
++    .model_img{
++        position: absolute;
++        left: 5%;
++        top: 10%;
++        width: 40%;
++        height: 70%;
++        border-radius: 20px;
++    }
++    .modal_btn{
++        position: absolute;
++        top: 90%;
++        width: 50%;
++        left: 45%;
++    }
++    .modal_price{
++        position: absolute;
++        top: 50%;
++        color: #FFFFFF;
++        left: 50%;
++    }
++    .modal_name{
++        position: absolute;
++        top: 10%;
++        left: 50%;
++        font-size: 40px;
++        font-weight: bold;
++        color: #FFFFFF;
+ 
++    }
+ 
+ }
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/shelved.patch	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ /dev/null	(revision 87277f67a97d275daef53e2155f2213935a38918)
+@@ -1,203 +0,0 @@
+-Index: store/templates/store/base.html
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>{% load static %}\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Мой макет</title>\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6\" crossorigin=\"anonymous\">\r\n\r\n    <link rel=\"stylesheet\" href=\"{% static 'store/css/style.css' %}\">\r\n</head>\r\n  <header>\r\n    <div class=\"\">\r\n      <div class=\"header\">\r\n        <div class=\"rounded-gradient-border container_logo\">\r\n          <div class=\"rounded-logo\">\r\n            <img src=\"{% static 'store/img/logoi.svg' %}\" alt=\"logo\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </header>\r\n<body>\r\n<!--<div class=\"my-container\">-->\r\n<!--    <div class=\"rectangle_one\">-->\r\n\r\n<!--        <img class=\"my-image\" src=\"{% static 'store/img/logoi.svg' %}\" alt=\"Описание фото\">-->\r\n\r\n        <div class=\"navbar\">\r\n            <ul>\r\n                <li><a href=\"ссылка1.html\" style=\"text-decoration: none; color: inherit;\">Доставка та оплата</a></li>\r\n                <li><a href=\"ссылка2.html\" style=\"text-decoration: none; color: inherit;\">Вакансії</a></li>\r\n                <li><a href=\"ссылка3.html\" style=\"text-decoration: none; color: inherit;\">Про нас</a></li>\r\n                <li><a href=\"ссылка4.html\" style=\"text-decoration: none; color: inherit;\">Співробітництво</a></li>\r\n            </ul>\r\n\r\n\r\n        </div>\r\n        <div class=\"language-switch\">\r\n            <label for=\"language-toggle\">UA</label>\r\n\r\n        </div>\r\n        <div class=\"image-button\">\r\n            <img src=\"{% static 'store/img/solar_cart-bold.svg' %}\" alt=\"Кнопка с изображением\">\r\n\r\n        </div>\r\n\r\n        <div class=\"search-panel\">\r\n            <input type=\"text\" placeholder=\"Search\">\r\n            <a src=\"{% static 'store/img/search.svg' %}\" alt=\"Кнопка с изображением\"></a>\r\n\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"polosha\">\r\n\r\n    <img src=\"{% static 'store/img/sushi.png' %}\" alt=\"\" srcset=\"\" class=\"sushi\">\r\n    <div class=\"sushi1\">Суші</div>\r\n    <img src=\"{% static 'store/img/Vector (2).png' %}\" alt=\"\" srcset=\"\" class=\"pizza\">\r\n    <div class=\"pizza1\">Пица</div>\r\n    <img src=\"{% static 'store/img/Vector (3).png' %}\" alt=\"\" srcset=\"\" class=\"salate\">\r\n    <div class=\"salate1\">Салати</div>\r\n    <img src=\"{% static 'store/img/Vector (4).png' %}\" alt=\"\" srcset=\"\" class=\"hot\">\r\n    <div class=\"hot1\">Горячие</div>\r\n    <img src=\"{% static 'store/img/Vector (5).png' %}\" alt=\"\" srcset=\"\" class=\"basis\">\r\n    <div class=\"basis1\">Основні</div>\r\n    <img src=\"{% static 'store/img/tarelkaess.png' %}\" alt=\"\" srcset=\"\" class=\"soup\">\r\n    <div class=\"soup1\">Супы</div>\r\n    <img src=\"{% static 'store/img/Vector (11).png' %}\" alt=\"\" srcset=\"\" class=\"snacks\">\r\n    <div class=\"snacks1\">Закуски</div>\r\n    <img src=\"{% static 'store/img/Vector (12).png' %}\" alt=\"\" srcset=\"\" class=\"garnish\">\r\n    <div class=\"garnish1\">Гарніри</div>\r\n    <img src=\"{% static 'store/img/Vector (13).png' %}\" alt=\"\" srcset=\"\" class=\"nopoi\">\r\n    <div class=\"nopoi1\">Напої</div>\r\n    <img src=\"{% static 'store/img/puvo_ess.png' %}\" alt=\"\" srcset=\"\" class=\"puvo\">\r\n    <div class=\"puvo1\">Пиво</div>\r\n</div>\r\n\r\n<div class=\"container-fluid my-carousel my-image1\">\r\n    <div id=\"carouselExampleIndicators\" class=\"carousel slide carousel-fade\" data-bs-ride=\"carousel\"\r\n         data-bs-interval=\"5000\">\r\n        <div class=\"carousel-inner\">\r\n            <div class=\"carousel-item active\">\r\n                <img src=\"{% static 'store/img/photo (1)2.png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n            <div class=\"carousel-item\">\r\n                <img src=\"{% static 'store/img/photo (1).png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n            <div class=\"carousel-item\">\r\n                <img src=\"{% static 'store/img/photo (1).png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n            <div class=\"carousel-item\">\r\n                <img src=\"{% static 'store/img/photo (1).png' %}\" class=\"d-block w-100\" alt=\"...\">\r\n            </div>\r\n        </div>\r\n        <div class=\"carousel-indicators carusel\">\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"0\"\r\n                    class=\"active rounded-circle\" aria-current=\"true\" aria-label=\"Slide 1\"></button>\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"1\"\r\n                    class=\"rounded-circle\" aria-label=\"Slide 2\"></button>\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"2\"\r\n                    class=\"rounded-circle\" aria-label=\"Slide 3\"></button>\r\n            <button type=\"button\" data-bs-target=\"#carouselExampleIndicators\" data-bs-slide-to=\"3\"\r\n                    class=\"rounded-circle\" aria-label=\"Slide 4\"></button>\r\n        </div>\r\n        <button class=\"carousel-control-prev\" type=\"button\" data-bs-target=\"#carouselExampleIndicators\"\r\n                data-bs-slide=\"prev\">\r\n            <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n            <span class=\"visually-hidden\">Previous</span>\r\n        </button>\r\n        <button class=\"carousel-control-next\" type=\"button\" data-bs-target=\"#carouselExampleIndicators\"\r\n                data-bs-slide=\"next\">\r\n            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n            <span class=\"visually-hidden\">Next</span>\r\n        </button>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"new-popular\">\r\n    Нове та популярне\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-md-3\">\r\n        <div class=\"card carta\">\r\n            <img class=\"card-img-top\" src=\"{% static 'store/img/roll.png' %}\" alt=\"Card image cap\">\r\n            <div class=\"card-body\">\r\n                <h5 class=\"card-title\">Ролл</h5>\r\n                <p class=\"card-text\">Лосось, сир Філадельфія, огірок, ікра тобіко</p>\r\n                <h5 class=\"card-title\">цена</h5>\r\n                <a href=\"#\" class=\"btn  dodaty\">Додати</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"rolu\">\r\n    Роли\r\n</div>\r\n\r\n{% for product in products %}\r\n    {% if product.category == 'Роли' %}\r\n<div class=\"row\">\r\n    <div class=\"col-md-3 rolu_cartochki\">\r\n        <div class=\"card carta\">\r\n            <img class=\"card-img-top\" src=\"{{ product.image }}\" alt=\"Card image cap\">\r\n            <div class=\"card-body\">\r\n                <h5 class=\"card-title\">{{ product.name }}</h5>\r\n                <p class=\"card-text\">{{ product.description }}</p>\r\n                <h5 class=\"card-title\">{{ product.price_for_view }} грн</h5>\r\n                <a href=\"#\" class=\"btn  dodaty\">Додати</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n    {% endif %}\r\n{% endfor %}\r\n\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js\"\r\n        integrity=\"sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf\"\r\n        crossorigin=\"anonymous\"></script>\r\n\r\n</body>\r\n</html>\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/store/templates/store/base.html b/store/templates/store/base.html
+---- a/store/templates/store/base.html	(revision e130f99576ef8a435e300c3f4fd9705975b0e25f)
+-+++ b/store/templates/store/base.html	(date 1686991232263)
+-@@ -13,49 +13,49 @@
+- 
+-     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+- </head>
+--  <header>
+-+<header>
+-     <div class="">
+--      <div class="header">
+--        <div class="rounded-gradient-border container_logo">
+--          <div class="rounded-logo">
+--            <img src="{% static 'store/img/logoi.svg' %}" alt="logo">
+--          </div>
+--        </div>
+--      </div>
+-+        <div class="header">
+-+            <div class="rounded-gradient-border container_logo">
+-+                <div class="rounded-logo">
+-+                    <img src="{% static 'store/img/logoi.svg' %}" alt="logo">
+-+                </div>
+-+            </div>
+-+        </div>
+-     </div>
+--  </header>
+-+</header>
+- <body>
+- <!--<div class="my-container">-->
+- <!--    <div class="rectangle_one">-->
+- 
+- <!--        <img class="my-image" src="{% static 'store/img/logoi.svg' %}" alt="Описание фото">-->
+- 
+--        <div class="navbar">
+--            <ul>
+--                <li><a href="ссылка1.html" style="text-decoration: none; color: inherit;">Доставка та оплата</a></li>
+--                <li><a href="ссылка2.html" style="text-decoration: none; color: inherit;">Вакансії</a></li>
+--                <li><a href="ссылка3.html" style="text-decoration: none; color: inherit;">Про нас</a></li>
+--                <li><a href="ссылка4.html" style="text-decoration: none; color: inherit;">Співробітництво</a></li>
+--            </ul>
+-+<div class="navbar">
+-+    <ul>
+-+        <li><a href="ссылка1.html" style="text-decoration: none; color: inherit;">Доставка та оплата</a></li>
+-+        <li><a href="ссылка2.html" style="text-decoration: none; color: inherit;">Вакансії</a></li>
+-+        <li><a href="ссылка3.html" style="text-decoration: none; color: inherit;">Про нас</a></li>
+-+        <li><a href="ссылка4.html" style="text-decoration: none; color: inherit;">Співробітництво</a></li>
+-+    </ul>
+- 
+- 
+--        </div>
+--        <div class="language-switch">
+--            <label for="language-toggle">UA</label>
+-+</div>
+-+<div class="language-switch">
+-+    <label for="language-toggle">UA</label>
+- 
+--        </div>
+--        <div class="image-button">
+--            <img src="{% static 'store/img/solar_cart-bold.svg' %}" alt="Кнопка с изображением">
+-+</div>
+-+<div class="image-button">
+-+    <img src="{% static 'store/img/solar_cart-bold.svg' %}" alt="Кнопка с изображением">
+- 
+--        </div>
+-+</div>
+- 
+--        <div class="search-panel">
+--            <input type="text" placeholder="Search">
+--            <a src="{% static 'store/img/search.svg' %}" alt="Кнопка с изображением"></a>
+-+<div class="search-panel">
+-+    <input type="text" placeholder="Search">
+-+    <a src="{% static 'store/img/search.svg' %}" alt="Кнопка с изображением"></a>
+- 
+--        </div>
+-+</div>
+- 
+--    </div>
+-+</div>
+- </div>
+- 
+- 
+-@@ -143,27 +143,60 @@
+- </div>
+- 
+- 
+-+
+-+
+-+{#{% for product in products %}#}
+-+{#    {% if product.category == 'Роли' %}#}
+-+{#<div class="row">#}
+-+{#    <div class="col-md-3 rolu_cartochki">#}
+-+{#        <div class="card carta">#}
+-+{#            <img class="card-img-top" src="{{ product.image }}" alt="Card image cap">#}
+-+{#            <div class="card-body">#}
+-+{#                <h5 class="card-title">{{ product.name }}</h5>#}
+-+{#                <p class="card-text">{{ product.description }}</p>#}
+-+{#                <h5 class="card-title">{{ product.price_for_view }} грн</h5>#}
+-+{#                <a href="#" class="btn  dodaty">Додати</a>#}
+-+{#            </div>#}
+-+{#        </div>#}
+-+{#    </div>#}
+-+{#</div>#}
+-+{#    {% endif %}#}
+-+{#{% endfor %}#}
+-+
+-+
+- <div class="rolu">
+-     Роли
+- </div>
+- 
+--{% for product in products %}
+--    {% if product.category == 'Роли' %}
+--<div class="row">
+--    <div class="col-md-3 rolu_cartochki">
+--        <div class="card carta">
+--            <img class="card-img-top" src="{{ product.image }}" alt="Card image cap">
+--            <div class="card-body">
+--                <h5 class="card-title">{{ product.name }}</h5>
+--                <p class="card-text">{{ product.description }}</p>
+--                <h5 class="card-title">{{ product.price_for_view }} грн</h5>
+--                <a href="#" class="btn  dodaty">Додати</a>
+--            </div>
+--        </div>
+--    </div>
+--</div>
+--    {% endif %}
+--{% endfor %}
+-+<div class="row" style="margin-top: 80%; margin-left: 4cm; margin-right: 2cm;">
+-+    {% for product in products %}
+-+        {% if product.category == 'Роли' %}
+-+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 ">
+-+                <div class="card h-100">
+-+                    <a href="#">
+-+                        <img class="card-img-top" src="{{ product.image }}" alt="" style="width: 100%; height: 200px; object-fit: cover;">
+-+                    </a>
+-+                    <div class="card-body">
+-+                        <h4 class="card-title my-title">
+-+                            <a href="#">{{ product.name }}</a>
+-+                        </h4>
+-+                        <div class="d-flex justify-content-between align-items-center">
+-+                            <h5>{{ product.price_for_view }} грн</h5>
+-+                            <a class="btn btn-outline-success" href="#">
+-+                                Додати
+-+                            </a>
+-+                        </div>
+-+                        <p class="card-text">{{ product.description }}</p>
+-+                    </div>
+-+                </div>
+-+            </div>
+-+        {% endif %}
+-+    {% endfor %}
+-+</div>
+-+
+-+
+-+
+-+
+- 
+- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+-         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+-Index: static/store/css/style.css
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>body {\r\n    background: rgba(0, 0, 0, 0.92);\r\n}\r\n\r\n\r\n.my-container {\r\n    position: absolute;\r\n    width: 1920px;\r\n    height: 225px;\r\n    left: 0px;\r\n    top: 0px;\r\n    background: #000000;\r\n}\r\n\r\n\r\n.my-image {\r\n    position: relative;\r\n    margin-left: auto;\r\n    right: -60%;\r\n    height: 80%;\r\n    top: 10%;\r\n\r\n\r\n\r\n    background-color: #fcfafa;\r\n    background-blend-mode: multiply;\r\n}\r\n\r\n\r\n\r\n.rectangle_one {\r\n    position: absolute;\r\n\r\n    width: 25%;\r\n    height: 100%;\r\n    background: rgb(11, 11, 11);\r\n    box-shadow: 0px 4px 12px rgb(248, 245, 245);\r\n    border-radius: 0px 1000px 1000px 0px;\r\n}\r\n\r\n\r\n\r\n.navbar ul {\r\n    position: absolute;\r\n    top: 25%;\r\n    left: 150%;\r\n    list-style: none;\r\n    display: flex;\r\n    gap: 20px;\r\n    padding: 0;\r\n    margin: 0;\r\n\r\n\r\n}\r\n\r\n.navbar li {\r\n    display: inline-block;\r\n    font-family: 'Futura PT';\r\n    font-style: normal;\r\n    font-weight: 300;\r\n    font-size: 18px;\r\n    line-height: 15px;\r\n\r\n    color: #FFFFFF;\r\n\r\n    flex: none;\r\n    order: 0;\r\n    flex-grow: 0;\r\n\r\n\r\n}\r\n\r\n.language-switch {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: flex-start;\r\n    padding: 12px 21px;\r\n    gap: 10px;\r\n    border-bottom: 0.5px solid #E1643C;\r\n    border-top: 2px solid #E1643C;\r\n\r\n    color: #FFFFFF;\r\n    position: absolute;\r\n    top: 18%;\r\n    left: 265%;\r\n    width: 55px;\r\n    height: 25px;\r\n\r\n    background: rgb(2, 2, 2);\r\n    box-shadow: 0px 4px 4px rgba(187, 187, 187, 0.08);\r\n    border-radius: 1000px;\r\n}\r\n\r\n.image-button {\r\n    position: absolute;\r\n    width: 50px;\r\n    height: 50px;\r\n    top: 18%;\r\n    left: 290%;\r\n    border: 1px solid #E1643C;\r\n    border-radius: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.image-button img {\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n}\r\n\r\n.search-panel {\r\n    position: absolute;\r\n    width: 408px;\r\n    height: 46px;\r\n    left: 917px;\r\n    top: 134px;\r\n    background: rgba(255, 255, 255, 0.02);\r\n    border-radius: 23px;\r\n}\r\n\r\n.search-panel input[type=\"text\"] {\r\n    width: 80%;\r\n    height: 100%;\r\n    padding: 10px;\r\n    border: none;\r\n    border-radius: 23px;\r\n    outline: none;\r\n    background: transparent;\r\n    color: #ffffff;\r\n}\r\n\r\n.search-panel button[type=\"submit\"] {\r\n    width: 20%;\r\n    height: 100%;\r\n    border: none;\r\n    border-radius: 23px;\r\n    background: #ffffff;\r\n    color: #000000;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.black {\r\n    box-sizing: border-box;\r\n\r\n    position: absolute;\r\n    width: 20%;\r\n    height: 20%;\r\n    left: 1%;\r\n    top: 1.92%;\r\n    bottom: 96.15%;\r\n\r\n    background: rgba(0, 0, 0, 0.61);\r\n    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);\r\n    border-radius: 1000px 0px 0px 1000px;\r\n    transform: rotate(180deg);\r\n}\r\n\r\n.photo1 {\r\n    height: 65%;\r\n    width: 90%;\r\n    position: absolute;\r\n    top: 35%;\r\n    left: 5%;\r\n}\r\n\r\n.polosha {\r\n    position: absolute;\r\n    width: 70%;\r\n    height: 10%;\r\n    left: 15%;\r\n    top: 107%;\r\n    z-index: 2;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    backdrop-filter: blur(8.5px);\r\n    /* Note: backdrop-filter has minimal browser support */\r\n\r\n    border-radius: 1000px;\r\n}\r\n\r\n.sushi {\r\n    width: 2%;\r\n    position: absolute;\r\n    left: 4.5%;\r\n    top: 15%;\r\n}\r\n\r\n.sushi1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 4%;\r\n}\r\n\r\n.pizza {\r\n    width: 2%;\r\n    position: absolute;\r\n    left: 13.5%;\r\n    top: 20%;\r\n\r\n}\r\n\r\n.pizza1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 13%;\r\n}\r\n\r\n.salate {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 23.5%;\r\n}\r\n\r\n.salate1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 22%;\r\n}\r\n\r\n.hot {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 33.5%;\r\n}\r\n\r\n.hot1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 32%;\r\n}\r\n\r\n.basis {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 43.5%;\r\n}\r\n\r\n.basis1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 42%;\r\n}\r\n\r\n.soup {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 53.5%;\r\n\r\n}\r\n\r\n.soup1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 52.5%;\r\n}\r\n\r\n.snacks {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 63%;\r\n}\r\n\r\n.snacks1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 62%;\r\n}\r\n\r\n.garnish {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 73.5%;\r\n}\r\n\r\n.garnish1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 72%;\r\n}\r\n\r\n.nopoi {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 15%;\r\n    left: 83.5%;\r\n}\r\n\r\n.nopoi1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 82.5%;\r\n}\r\n\r\n.puvo {\r\n    width: 2%;\r\n    position: absolute;\r\n    top: 20%;\r\n    left: 92.5%;\r\n}\r\n\r\n.puvo1 {\r\n    position: absolute;\r\n    color: #ffff;\r\n    top: 65%;\r\n    left: 92%;\r\n}\r\n\r\n.icon {\r\n    width: 200px;\r\n    /* Задайте нужную ширину и высоту для вашего логотипа */\r\n    height: 200px;\r\n    border-radius: 50%;\r\n    /* Создает круглую форму */\r\n    background: linear-gradient(to right, #000 0%, #000 0%, transparent 30%, transparent 100%);\r\n    /* Градиентный фон */\r\n    border: 0.1px solid #000;\r\n    /* Толщина и цвет обводки */\r\n    box-sizing: border-box;\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    z-index: 1;\r\n}\r\n\r\n.my-image1 {\r\n    position: absolute;\r\n    top: 36%;\r\n    width: 90%;\r\n\r\n    left: 5%;\r\n\r\n}\r\n\r\n.carusel {\r\n    position: absolute;\r\n    top: 20%;\r\n    left: -85%;\r\n}\r\n\r\n.carousel-indicators.carusel button {\r\n    width: 20px;\r\n    height: 20px;\r\n\r\n}\r\n\r\n\r\n.new-popular {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 120%;\r\n    font-family: 'Futura PT';\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.carta {\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 135%;\r\n    width: 20%;\r\n}\r\n\r\n.dodaty {\r\n\r\n\r\n    position: absolute;\r\n    width: 117px;\r\n    height: 40px;\r\n    left: 60%;\r\n    top: 85%;\r\n\r\n    background: #E1643C;\r\n    border-radius: 6px;\r\n}\r\n\r\nbody {\r\n  background: #242424;\r\n}\r\n\r\nheader {\r\n  background: rgb(0, 0, 0);\r\n  height: 143px;\r\n\r\n  @media screen and (min-width: 768px) {\r\n    height: 225px;\r\n  }\r\n}\r\n\r\n.header {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n\r\n}\r\n\r\n.container_logo {\r\n  position: relative;\r\n  top: 25px;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  align-items: center;\r\n\r\n  width: 130px;\r\n  height: 130px;\r\n  padding: 10px;\r\n  margin-left: -20px;\r\n\r\n  background: rgba(0, 0, 0, 0.61);\r\n  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);\r\n  border-radius: 0px 130px 130px 0px;\r\n\r\n  @media screen and (min-width: 768px) {\r\n    top: 0;\r\n    width: 552px;\r\n    height: 200px;\r\n    padding: 10px;\r\n    /* margin-left: -200px; */\r\n  }\r\n\r\n}\r\n\r\n.rounded-logo{\r\n  width: 100px;\r\n  height: 100px;\r\n\r\n  @media screen and (min-width: 768px) {\r\n    width: 200px;\r\n    height: 200px;\r\n  }\r\n\r\n  & img {\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: cover;\r\n    border-radius: 50%;\r\n  }\r\n};\r\n\r\n.rounded-gradient-border {\r\n  position: relative;\r\n  border-radius: 50%;\r\n}\r\n\r\n.rounded-gradient-border::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  inset: 0;\r\n  border-radius: 0px 130px 130px 0px;\r\n  padding: 1px;\r\n  background: linear-gradient(to left, #494949 0%, transparent 100%);\r\n  -webkit-mask:\r\n    linear-gradient(#fff 0 0) content-box,\r\n    linear-gradient(#fff 0 0);\r\n  -webkit-mask-composite: xor;\r\n  mask-composite: exclude;\r\n}\r\n.rolu{\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 190%;\r\n    font-family: 'Futura PT';\r\n    font-style: normal;\r\n    font-weight: 700;\r\n    font-size: 65px;\r\n    line-height: 83px;\r\n    color: #FFFFFF;\r\n    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);\r\n}\r\n.rolu_cartochki{\r\n    position: absolute;\r\n    top: 210%;\r\n    width: 100%;\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/static/store/css/style.css b/static/store/css/style.css
+---- a/static/store/css/style.css	(revision e130f99576ef8a435e300c3f4fd9705975b0e25f)
+-+++ b/static/store/css/style.css	(date 1686990612814)
+-@@ -430,7 +430,7 @@
+-   border-radius: 0px 130px 130px 0px;
+- 
+-   @media screen and (min-width: 768px) {
+--    top: 0;
+-+    top: 0%;
+-     width: 552px;
+-     height: 200px;
+-     padding: 10px;
+-@@ -486,8 +486,10 @@
+-     color: #FFFFFF;
+-     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.12);
+- }
+--.rolu_cartochki{
+--    position: absolute;
+--    top: 210%;
+--    width: 100%;
+--}
+-\ No newline at end of file
+-+/*.row1{*/
+-+/*    position: absolute;*/
+-+/*    top: 210%;*/
+-+/*    margin-top: 50px;*/
+-+/*    margin-left: 4cm;*/
+-+/*    margin-right: 2cm;*/
+-+/*}*/
+-\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33_[Changes]/shelved.patch	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ /dev/null	(revision 87277f67a97d275daef53e2155f2213935a38918)
+@@ -1,94 +0,0 @@
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1cceb735-bfbe-4c88-8600-5fe36e8b9ed3\" name=\"Changes\" comment=\"Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3\">\r\n      <change beforePath=\"$PROJECT_DIR$/db.sqlite3\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/db.sqlite3\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/static/store/css/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/static/store/css/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/store/templates/store/base.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/store/templates/store/base.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2RIVSWuEgROBOg4S2jNFQt2LeKx\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"D:/chefin_final/chefin_final/chefin/manage.py\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Python.manage\">\r\n    <configuration name=\"manage\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\r\n      <module name=\"chefin\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"D:\\site_chefin\\venv\\Scripts\\python.exe\" />\r\n      <option name=\"SDK_NAME\" value=\"Python 3.11 (site_chefin)\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/manage.py\" />\r\n      <option name=\"PARAMETERS\" value=\"runserver\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"chefin\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\r\n      <module name=\"chefin\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"D:\\chefin_final\\chefin_final\\chefin\\venv\\Scripts\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\r\n      <option name=\"port\" value=\"8000\" />\r\n      <option name=\"host\" value=\"\" />\r\n      <option name=\"additionalOptions\" value=\"\" />\r\n      <option name=\"browserUrl\" value=\"\" />\r\n      <option name=\"runTestServer\" value=\"false\" />\r\n      <option name=\"runNoReload\" value=\"false\" />\r\n      <option name=\"useCustomRunCommand\" value=\"false\" />\r\n      <option name=\"customRunCommand\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Django Server.chefin\" />\r\n      <item itemvalue=\"Python.manage\" />\r\n    </list>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1cceb735-bfbe-4c88-8600-5fe36e8b9ed3\" name=\"Changes\" comment=\"\" />\r\n      <created>1686937582974</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1686937582974</updated>\r\n      <workItem from=\"1686937588204\" duration=\"979000\" />\r\n      <workItem from=\"1686938851312\" duration=\"1390000\" />\r\n      <workItem from=\"1686989348964\" duration=\"1918000\" />\r\n      <workItem from=\"1687006856902\" duration=\"1300000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3\">\r\n      <created>1687007308082</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687007308082</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/chefin$manage.coverage\" NAME=\"manage Coverage Results\" MODIFIED=\"1687010087869\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 5bc5fcab1b9cf6a04c58d578c3c09cbb1c37d79e)
+-+++ b/.idea/workspace.xml	(date 1687113179575)
+-@@ -6,8 +6,6 @@
+-   <component name="ChangeListManager">
+-     <list default="true" id="1cceb735-bfbe-4c88-8600-5fe36e8b9ed3" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3">
+-       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/static/store/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/store/css/style.css" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/store/templates/store/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/store/base.html" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -29,20 +27,20 @@
+-     <option name="hideEmptyMiddlePackages" value="true" />
+-     <option name="showLibraryContents" value="true" />
+-   </component>
+--  <component name="PropertiesComponent"><![CDATA[{
+--  "keyToString": {
+--    "RunOnceActivity.OpenProjectViewOnStart": "true",
+--    "RunOnceActivity.ShowReadmeOnStart": "true",
+--    "WebServerToolWindowFactoryState": "false",
+--    "last_opened_file_path": "D:/chefin_final/chefin_final/chefin/manage.py",
+--    "node.js.detected.package.eslint": "true",
+--    "node.js.detected.package.tslint": "true",
+--    "node.js.selected.package.eslint": "(autodetect)",
+--    "node.js.selected.package.tslint": "(autodetect)",
+--    "nodejs_package_manager_path": "npm",
+--    "vue.rearranger.settings.migration": "true"
+-+  <component name="PropertiesComponent">{
+-+  &quot;keyToString&quot;: {
+-+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-+    &quot;last_opened_file_path&quot;: &quot;D:/chefin_final/chefin_final/chefin/manage.py&quot;,
+-+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+-   }
+--}]]></component>
+-+}</component>
+-   <component name="RunManager" selected="Python.manage">
+-     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+-       <module name="chefin" />
+-@@ -106,7 +104,7 @@
+-       <workItem from="1686937588204" duration="979000" />
+-       <workItem from="1686938851312" duration="1390000" />
+-       <workItem from="1686989348964" duration="1918000" />
+--      <workItem from="1687006856902" duration="1300000" />
+-+      <workItem from="1687006856902" duration="1569000" />
+-     </task>
+-     <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3">
+-       <created>1687007308082</created>
+-@@ -115,7 +113,21 @@
+-       <option name="project" value="LOCAL" />
+-       <updated>1687007308082</updated>
+-     </task>
+--    <option name="localTasksCounter" value="2" />
+-+    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3">
+-+      <created>1687010107998</created>
+-+      <option name="number" value="00002" />
+-+      <option name="presentableId" value="LOCAL-00002" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1687010107998</updated>
+-+    </task>
+-+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3">
+-+      <created>1687010177337</created>
+-+      <option name="number" value="00003" />
+-+      <option name="presentableId" value="LOCAL-00003" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1687010177337</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="4" />
+-     <servers />
+-   </component>
+-   <component name="TypeScriptGeneratedFilesManager">
+-@@ -126,6 +138,6 @@
+-     <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3" />
+-   </component>
+-   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+--    <SUITE FILE_PATH="coverage/chefin$manage.coverage" NAME="manage Coverage Results" MODIFIED="1687010087869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+-+    <SUITE FILE_PATH="coverage/chefin$manage.coverage" NAME="manage Coverage Results" MODIFIED="1687010186296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+-   </component>
+- </project>
+-\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41__Changes_.xml	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ /dev/null	(revision 87277f67a97d275daef53e2155f2213935a38918)
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]" date="1686991309112" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 17.06.2023 11:41 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="db.sqlite3" />
+-    <option name="AFTER_PATH" value="db.sqlite3" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/db.sqlite3" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33__Changes_.xml	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ /dev/null	(revision 87277f67a97d275daef53e2155f2213935a38918)
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_18_06_2023_21_33_[Changes]" date="1687113194747" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 18.06.2023 21:33 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="db.sqlite3" />
+-    <option name="AFTER_PATH" value="db.sqlite3" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2023_21_33_[Changes]/db.sqlite3" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: store/templates/store/product_detail.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/store/templates/store/product_detail.html b/store/templates/store/product_detail.html
+new file mode 100644
+--- /dev/null	(date 1687708086977)
++++ b/store/templates/store/product_detail.html	(date 1687708086977)
+@@ -0,0 +1,26 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++<!-- product_detail.html -->
++<div class="carta_tovara_item">
++    <img class="card-img-top" src="{{ product.image }}" alt="">
++    <div class="card-body">
++        <h4 class="card-title my-title">
++            <a>{{ product.name }}</a>
++        </h4>
++        <div class="price_and_add">
++            <h5>{{ product.price_for_view }} грн</h5>
++            <a class="btn btn-outline-success btnnn" href="#">
++                Додати +
++            </a>
++        </div>
++        <p class="card-text">{{ product.description }}</p>
++    </div>
++</div>
++
++</body>
++</html>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1cceb735-bfbe-4c88-8600-5fe36e8b9ed3\" name=\"Changes\" comment=\"Merge remote-tracking branch 'origin/main'\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/db.sqlite3\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/db.sqlite3\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/static/store/css/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/static/store/css/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/store/templates/store/base.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/store/templates/store/base.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PREVIOUS_COMMIT_AUTHORS\">\r\n      <list>\r\n        <option value=\"vilka &lt;vilkamil9@gmail.com&gt;\" />\r\n      </list>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n    <option name=\"RESET_MODE\" value=\"HARD\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2RIVSWuEgROBOg4S2jNFQt2LeKx\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/chefin_final/chefin_final/chefin/manage.py&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"Python.manage\">\r\n    <configuration name=\"manage\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\r\n      <module name=\"chefin\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"D:\\site_chefin\\venv\\Scripts\\python.exe\" />\r\n      <option name=\"SDK_NAME\" value=\"Python 3.11 (site_chefin)\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/manage.py\" />\r\n      <option name=\"PARAMETERS\" value=\"runserver\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"chefin\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\r\n      <module name=\"chefin\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"D:\\chefin_final\\chefin_final\\chefin\\venv\\Scripts\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\r\n      <option name=\"port\" value=\"8000\" />\r\n      <option name=\"host\" value=\"\" />\r\n      <option name=\"additionalOptions\" value=\"\" />\r\n      <option name=\"browserUrl\" value=\"\" />\r\n      <option name=\"runTestServer\" value=\"false\" />\r\n      <option name=\"runNoReload\" value=\"false\" />\r\n      <option name=\"useCustomRunCommand\" value=\"false\" />\r\n      <option name=\"customRunCommand\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Django Server.chefin\" />\r\n      <item itemvalue=\"Python.manage\" />\r\n    </list>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1cceb735-bfbe-4c88-8600-5fe36e8b9ed3\" name=\"Changes\" comment=\"\" />\r\n      <created>1686937582974</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1686937582974</updated>\r\n      <workItem from=\"1686937588204\" duration=\"979000\" />\r\n      <workItem from=\"1686938851312\" duration=\"1390000\" />\r\n      <workItem from=\"1686989348964\" duration=\"1918000\" />\r\n      <workItem from=\"1687006856902\" duration=\"406000\" />\r\n      <workItem from=\"1687010233761\" duration=\"12000\" />\r\n      <workItem from=\"1687010247074\" duration=\"24000\" />\r\n      <workItem from=\"1687010272121\" duration=\"53000\" />\r\n      <workItem from=\"1687026423159\" duration=\"5768000\" />\r\n      <workItem from=\"1687075229107\" duration=\"7719000\" />\r\n      <workItem from=\"1687170301771\" duration=\"6899000\" />\r\n      <workItem from=\"1687292630476\" duration=\"3722000\" />\r\n      <workItem from=\"1687338489346\" duration=\"3259000\" />\r\n      <workItem from=\"1687341770323\" duration=\"618000\" />\r\n      <workItem from=\"1687342422984\" duration=\"1096000\" />\r\n      <workItem from=\"1687433024534\" duration=\"4500000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"vadik rabotay suka\">\r\n      <created>1687035009341</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687035009341</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"vadik rabotay suka\">\r\n      <created>1687035129288</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687035129288</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"vadik rabotay suka\">\r\n      <created>1687114312140</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687114312140</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"vadik rabotay suka\">\r\n      <created>1687166797360</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687166797360</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Merge remote-tracking branch 'origin/main'\">\r\n      <created>1687167153827</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687167153827</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Merge remote-tracking branch 'origin/main'\">\r\n      <created>1687167372309</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687167372309</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Merge remote-tracking branch 'origin/main'\">\r\n      <created>1687173229823</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687173229823</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3&#10;#&#9;chefin/static/store/css/style.css\">\r\n      <created>1687175428661</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687175428661</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"dimon degan\">\r\n      <created>1687176110555</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687176110555</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"dimon degan\">\r\n      <created>1687176349497</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687176349497</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"dimon degan\">\r\n      <created>1687177000164</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687177000164</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"dimon degan\">\r\n      <created>1687177262458</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687177262458</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"dimon degan\">\r\n      <created>1687263596235</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687263596235</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"dimon degan\">\r\n      <created>1687276296893</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687276296893</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"dimon degan\">\r\n      <created>1687278177461</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687278177461</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"dimon degan\">\r\n      <created>1687282277939</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687282277939</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"dimon degan\">\r\n      <created>1687295680302</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687295680302</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"dimon degan\">\r\n      <created>1687338561945</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687338561945</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"dimon degan\">\r\n      <created>1687340532318</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687340532318</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"dimon degan\">\r\n      <created>1687340543323</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687340543323</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"dimon degan\">\r\n      <created>1687341225988</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687341225988</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"dimon degan\">\r\n      <created>1687341384161</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687341384161</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"Merge remote-tracking branch 'origin/main'\">\r\n      <created>1687342929392</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687342929392</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"Merge remote-tracking branch 'origin/main'\">\r\n      <created>1687342994194</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687342994194</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"Merge remote-tracking branch 'origin/main'\">\r\n      <created>1687343288737</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687343288737</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"26\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"User\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"*\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"user\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"*\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n              <option name=\"TEXT_FILTER_SETTINGS\">\r\n                <TextFilterSettings>\r\n                  <option name=\"REGEX\" value=\"true\" />\r\n                </TextFilterSettings>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3\" />\r\n    <MESSAGE value=\"vadik rabotay suka\" />\r\n    <MESSAGE value=\"Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3&#10;#&#9;chefin/static/store/css/style.css\" />\r\n    <MESSAGE value=\"dimon degan\" />\r\n    <MESSAGE value=\"Merge remote-tracking branch 'origin/main'\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Merge remote-tracking branch 'origin/main'\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/chefin$manage.coverage\" NAME=\"manage Coverage Results\" MODIFIED=\"1687441833295\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ b/.idea/workspace.xml	(date 1687761454390)
+@@ -4,11 +4,21 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1cceb735-bfbe-4c88-8600-5fe36e8b9ed3" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
++    <list default="true" id="1cceb735-bfbe-4c88-8600-5fe36e8b9ed3" name="Changes" comment="vadik suka rabotay suka">
++      <change afterPath="$PROJECT_DIR$/store/templates/store/product_detail.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/db.sqlite3" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_2023_11_41__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_12_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_12_58__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_03__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_22__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/static/store/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/store/css/style.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/static/store/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/store/js/index.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/store/templates/store/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/store/base.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -60,10 +70,9 @@
+       <envs>
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+-      <option name="SDK_HOME" value="D:\site_chefin\venv\Scripts\python.exe" />
+-      <option name="SDK_NAME" value="Python 3.11 (site_chefin)" />
++      <option name="SDK_HOME" value="" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+-      <option name="IS_MODULE_SDK" value="false" />
++      <option name="IS_MODULE_SDK" value="true" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+@@ -127,6 +136,7 @@
+       <workItem from="1687341770323" duration="618000" />
+       <workItem from="1687342422984" duration="1096000" />
+       <workItem from="1687433024534" duration="4500000" />
++      <workItem from="1687680921404" duration="6966000" />
+     </task>
+     <task id="LOCAL-00001" summary="vadik rabotay suka">
+       <created>1687035009341</created>
+@@ -358,9 +368,10 @@
+     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;chefin/db.sqlite3&#10;#&#9;chefin/static/store/css/style.css" />
+     <MESSAGE value="dimon degan" />
+     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
++    <MESSAGE value="vadik suka rabotay suka" />
++    <option name="LAST_COMMIT_MESSAGE" value="vadik suka rabotay suka" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+-    <SUITE FILE_PATH="coverage/chefin$manage.coverage" NAME="manage Coverage Results" MODIFIED="1687441833295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
++    <SUITE FILE_PATH="coverage/chefin$manage.coverage" NAME="manage Coverage Results" MODIFIED="1687697691620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: static/store/js/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>console.log('VADIK LOG');\r\n\r\ndocument.querySelector('#sushi11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#rolu_opuckania').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#pizza11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#pizza_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#salate11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#salate_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#hot11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#hotter_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#basis11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#ocnove_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#soup11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#supu_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\ndocument.querySelector('#snacks11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#zakysku_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#garnish11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#garniru_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#nopoi11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#xolod_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#puvo11').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#puvo_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#sushi111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#rolu_opuckania').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#pizza111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#pizza_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#salate111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#salate_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#hot111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#hotter_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#basis111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#ocnove_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#soup111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#supu_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\ndocument.querySelector('#snacks111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#zakysku_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#garnish111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#garniru_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#nopoi111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#xolod_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.querySelector('#puvo111').addEventListener('click', function (){\r\n    console.log('as')\r\n    document.querySelector('#puvo_id').scrollIntoView({behavior:\"smooth\"});\r\n})\r\n\r\ndocument.getElementById('searchButton').addEventListener('click', performSearch);\r\n    document.getElementById('searchInput').addEventListener('keydown', function(event) {\r\n        if (event.key === 'Enter') {\r\n            performSearch();\r\n        }\r\n    });\r\n\r\n    function performSearch() {\r\n        var searchValue = document.getElementById('searchInput').value.toLowerCase();\r\n        var products = document.getElementsByClassName('col-md-3');\r\n\r\n        for (var i = 0; i < products.length; i++) {\r\n            var productName = products[i].querySelector('.card-title a').textContent.toLowerCase();\r\n\r\n            if (productName.includes(searchValue)) {\r\n                products[i].style.display = 'block';\r\n            } else {\r\n                products[i].style.display = 'none';\r\n            }\r\n        }\r\n    }
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/static/store/js/index.js b/static/store/js/index.js
+--- a/static/store/js/index.js	(revision 87277f67a97d275daef53e2155f2213935a38918)
++++ b/static/store/js/index.js	(date 1687602119476)
+@@ -118,4 +118,5 @@
+                 products[i].style.display = 'none';
+             }
+         }
+-    }
+\ No newline at end of file
++    }
++

@@ -1,0 +1,78 @@
+body{
+    background: #0D0D0D;
+}
+
+.link_roli_zayvka{
+    position: absolute;
+    width: 40%;
+    height: 22px;
+    left: 10%;
+    top: 35%;
+    font-family: 'Futura PT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 22px;
+    color: #5e5e5e;
+    text-decoration: none;
+}
+
+.link_roli22 {
+    position: absolute;
+    width: 40%;
+    height: 22px;
+    left: 15%;
+    top: 35%;
+    font-family: 'Futura PT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 22px;
+    color: #5e5e5e;
+    text-decoration: none;
+}
+
+.link_oformleeny {
+    position: absolute;
+    width: 40%;
+    height: 22px;
+    left: 21%;
+    top: 35%;
+    font-family: 'Futura PT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+.oformlenia_zamovleny{
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    color: #FFFFFF;
+    font-family: 'Futura PT';
+    font-size: 58px;
+    font-weight: bold;
+}
+.block_chernui{
+    position: absolute;
+    top: 60%;
+    background-color: #000000;
+    left: 10%;
+    width: 80%;
+    height: 170%;
+    border-radius: 30px;
+}
+.ocobusti_danni{
+    z-index: 999;
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    color: #FFFFFF;
+    font-family: 'Futura PT';
+    font-size: 30px;
+
+
+}

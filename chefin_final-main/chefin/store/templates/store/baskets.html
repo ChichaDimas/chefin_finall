@@ -1,0 +1,321 @@
+{% load static %}
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'store/css/basket.css' %}">
+</head>
+
+<body>
+<div class="verx">
+    <div class="dostavka_verx">
+        <a href="/" style="text-decoration: none; color: white;margin-left: -80%;">Головна</a>
+    </div>
+    <div class="dostavka_verx">
+        <a href="{% url 'dostavka_ta_oplata' %}" style="text-decoration: none; color: white">Доставка та оплата</a>
+    </div>
+    <div class="vakansiy_verx">Вакансії</div>
+    <div class="pro_verx">Про нас</div>
+    <div class="spivrobitnuchtvo_verx">Співробітництво</div>
+
+    <div id="languageToggle" onclick="toggleLanguage()">UA</div>
+
+
+    <div class="search-panel">
+        <input type="text" placeholder="Пошук товарів">
+        <img src="{% static 'store/img/lupa.svg' %}" alt="Search Icon">
+    </div>
+
+    <div class="header">
+        <div class="rounded-gradient-border container_logo">
+            <div class="rounded-logo">
+                <a href="/">
+                    <img class="imm" src="{% static 'store/img/logoi.svg' %}" alt="logo">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="call">
+        <img class="call_img_verx" src="{% static 'store/img/call.svg' %}" onclick="openModal()">
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1 class="h1_zvorot">Зворотній зв`язок</h1>
+            <form>
+                <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+                <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+
+                <button type="submit" id="otpavit">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="phone-numbers">
+        <span class="orange-number1">+38 (050) </span>
+        <span class="orange-number2">+38 (066) </span>
+        <span class="white-number1"> 012-01-01</span>
+        <span class="white-number2"> 670-10-01</span>
+    </div>
+</div>
+
+
+<a href="/" class="link_roli">Головна </a>
+<a class="link_roli2">/ Корзина</a>
+
+{% if baskets %}
+    <div class="cart-items coloni">
+        {% for basket in baskets %}
+            <div class="card mb-3 backgrrr">
+                <div class="row g-0 backgr1">
+                    <div class="col-md-4 basket_img_main">
+                        <img src="{{ basket.image }}" alt="Product Image" class="img-fluid basket_img">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title basket_name">{{ basket.name }}</h5>
+                            <div class="quantity">
+                                <button class="btn btn-outline-secondary btn-minus btn_photo_minus no-border"
+                                        type="button">
+                                    <img src="{% static 'store/img/minus.svg' %}" alt="Изображение">
+                                </button>
+
+                                 <input type="text" class="form-control quantity-input no-border" value="1">
+
+                                <button class="btn btn-outline-secondary btn-plus btn_photo_plus no-border ">
+                                    <img src="{% static 'store/img/plus.svg' %}" alt="Изображение">
+                                </button>
+                            </div>
+
+                            <button onclick="button()">nasd</button>
+                            <p class="card-text" style="color: white" id="product_poster">{{ basket.product_poster }}</p>
+                            <p style="color: white">{{ basket.id }}</p>
+                            <p style="color: white">{{ basket.comment }}</p>
+                            <div class="price_product">{{ basket.price|slice:'-2' }} грн</div>
+                            <div class="col-lg-4 basket_photo">
+                            <a href="{% url 'basket_remove' basket.id %}" class="remove-item" data-id="{{ basket.id }}">
+                              <img src="{% static 'store/img/basket.svg' %}" alt="Изображение">
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="divider">
+        {% endfor %}
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+function button() {
+    let inputValue = document.querySelector('.quantity-input').value;
+    let product_poster = document.getElementById('product_poster').textContent;
+    alert(product_poster)
+    const csrfToken = '{{ csrf_token }}';
+
+    var url = '/inform/';
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify({ number: inputValue, product_poster: product_poster })
+    })
+        .then(function (response) {
+            if (response.ok) {
+                alert('yes');
+            }
+        })
+        .catch(function (error) {
+            alert('no');
+        });
+}
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var removeButtons = document.querySelectorAll('.remove-item');
+
+    removeButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var productFinal = button.getAttribute('data-id');
+
+            var url = '/baskets/remove/' + productFinal + '/';
+
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    // Обновите страницу или удалите элемент корзины из DOM
+                    location.reload();
+                }
+            })
+            .catch(function(error) {
+                // Обработка ошибок
+            });
+        });
+    });
+});
+
+</script>
+
+
+{% else %}
+    <h4 class="mt-3 mb-3 text-center text-white display-4">Корзина пуста</h4>
+{% endif %}
+<div class="itogo">
+    <div class="card mb-3 text-white oplataa">
+        <div class="card-footer">
+            <p class="float-start splata2">До сплати: <span class="underline">_ _ _ _ _ _ _ _ _ _</span></p>
+            <h4 class="float-end price_itogo" id="total-price"></h4>
+        </div>
+    </div>
+
+
+
+    <a class="btn btn-success btn-lg float-end btn_oformity_zakaz" href="../orders/order-create.html">
+        Оформити замовлення
+    </a>
+</div>
+
+
+{#<h1 class="bask_one">Корзина</h1>#}
+
+{#<div class="nuz" style=" margin-top: -100%">#}
+{#    <div class="carta_sity">Карта сайту</div>#}
+{#    <div class="polosha_orange_nuz"></div>#}
+{#    <div class="doctavka_nuz">Доставка та оплата</div>#}
+{#    <div class="pro_nac">Про нас</div>#}
+{#    <div class="rolu_nuz">Роли</div>#}
+{#    <div class="pizza_nuz">Піца</div>#}
+{#    <div class="salate_nuz">Салати</div>#}
+{#    <div class="ocnovni_nuz">Основні страви</div>#}
+{#    <div class="garniru_nuz">Гарніри</div>#}
+{#    <div class="supu_nuz">Супи</div>#}
+{#    <div class="zakusku_nuz">Закуски</div>#}
+{#    <div class="gariche_nuz">Гаряче</div>#}
+{#    <div class="hold_nuz">Холодні напої</div>#}
+{#    <div class="puvo_nuz">Пиво</div>#}
+{#    <div class="contact_nuz">Контакти</div>#}
+{#    <div class="polosha_orange_nuz2"></div>#}
+{#    <div class="number_nuz">+38 (050) 012-01-01</div>#}
+{#    <div class="number_nuz2">+38 (066) 670-10-01</div>#}
+{#    <div class="email_nuz">chef.in.ua@gmail.com</div>#}
+{#    <div class="adress_nuz">Катерининська площа, Одеса, Одеська область, 65000</div>#}
+{#    <div class="prava_nuz">© 2023 | Усі права захищені</div>#}
+{#    <header>#}
+{#        <div class="">#}
+{#            <div class="header">#}
+{#                <div class="rounded-gradient-border container_logo">#}
+{#                    <div class="rounded-logo">#}
+{#                        <img class="imm" src="{% static 'store/img/logoi.svg' %}" alt="logo">#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </header>#}
+{#    <img class="instagram" src="{% static 'store/img/instagram.png' %}" alt="logo">#}
+{#    <img class="telegram" src="{% static 'store/img/telegram.png' %}" alt="logo">#}
+{#    <img class="viber" src="{% static 'store/img/viber.png' %}" alt="logo">#}
+{#    <img class="facebook" src="{% static 'store/img/facebook.png' %}" alt="logo">#}
+{#</div>#}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+<script src="{% static 'store/js/index.js' %}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+    function toggleLanguage() {
+        var toggle = document.getElementById("languageToggle");
+        var currentLanguage = toggle.innerText;
+
+        if (currentLanguage === "RU") {
+            toggle.innerText = "UA";
+        } else {
+            toggle.innerText = "RU";
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const minusBtns = document.querySelectorAll('.btn-minus');
+        const plusBtns = document.querySelectorAll('.btn-plus');
+        const quantityInputs = document.querySelectorAll('.quantity-input');
+        const totalPriceElement = document.getElementById('total-price');
+        const priceElements = document.querySelectorAll('.price_product');
+
+        function updateTotalPrice() {
+            let total = 0;
+            quantityInputs.forEach(function (quantityInput, index) {
+                const quantity = parseInt(quantityInput.value);
+                const price = parseFloat(priceElements[index].textContent);
+                total += quantity * price;
+            });
+            totalPriceElement.textContent = total.toFixed(2) + ' грн';
+        }
+
+        minusBtns.forEach(function (minusBtn) {
+            minusBtn.addEventListener('click', function () {
+                const quantityInput = this.parentNode.querySelector('.quantity-input');
+                let quantity = parseInt(quantityInput.value);
+                if (quantity > 1) {
+                    quantity--;
+                    quantityInput.value = quantity;
+                    updateTotalPrice();
+                }
+            });
+        });
+
+        plusBtns.forEach(function (plusBtn) {
+            plusBtn.addEventListener('click', function () {
+                const quantityInput = this.parentNode.querySelector('.quantity-input');
+                let quantity = parseInt(quantityInput.value);
+                quantity++;
+                quantityInput.value = quantity;
+                updateTotalPrice();
+            });
+        });
+
+        quantityInputs.forEach(function (quantityInput) {
+            quantityInput.addEventListener('change', function () {
+                let quantity = parseInt(this.value);
+                if (isNaN(quantity) || quantity < 1) {
+                    quantity = 1;
+                    this.value = quantity;
+                }
+                updateTotalPrice();
+            });
+        });
+
+        updateTotalPrice();
+    });
+
+
+</script>
+
+</body>
+</html>

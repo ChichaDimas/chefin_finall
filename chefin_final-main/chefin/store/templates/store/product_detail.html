@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- product_detail.html -->
+<div class="carta_tovara_item">
+    <img class="card-img-top" src="{{ product.image }}" alt="">
+    <div class="card-body">
+        <h4 class="card-title my-title">
+            <a>{{ product.name }}</a>
+        </h4>
+        <div class="price_and_add">
+            <h5>{{ product.price_for_view }} грн</h5>
+            <a class="btn btn-outline-success btnnn" href="#">
+                Додати +
+            </a>
+        </div>
+        <p class="card-text">{{ product.description }}</p>
+    </div>
+</div>
+
+</body>
+</html>

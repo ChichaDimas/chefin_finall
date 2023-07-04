@@ -1,0 +1,722 @@
+body {
+    background: rgba(0, 0, 0, 0.92);
+    overflow-x: hidden;
+}
+
+
+.container_logo {
+    position: relative;
+
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    height: 230px;
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.61);
+
+
+}
+
+
+.rounded-gradient-border {
+    position: relative;
+    border-radius: 0px 130px 130px 0px;
+    box-shadow: 0 0 0 1px;
+    outline: 1px solid #5e5e5e;
+}
+
+
+.my-container {
+    position: absolute;
+    width: 1920px;
+    height: 225px;
+    left: 0px;
+    top: 0px;
+    background: #000000;
+}
+
+
+.my-image {
+    position: relative;
+    margin-left: auto;
+    right: -60%;
+    height: 80%;
+    top: 10%;
+
+
+    background-color: #fcfafa;
+    background-blend-mode: multiply;
+}
+
+
+.rectangle_one {
+    position: absolute;
+
+    width: 25%;
+    height: 100%;
+    background: rgb(11, 11, 11);
+    box-shadow: 0px 4px 12px rgb(248, 245, 245);
+    border-radius: 0px 1000px 1000px 0px;
+}
+
+
+.image-button {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 18%;
+    left: 290%;
+    border: 1px solid #E1643C;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-button img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.black {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    left: 1%;
+    top: 1.92%;
+    bottom: 96.15%;
+
+    background: rgba(0, 0, 0, 0.61);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 1000px 0px 0px 1000px;
+    transform: rotate(180deg);
+}
+
+
+.dostavka_verx {
+    position: absolute;
+    top: 7%;
+    left: 43%;
+    color: #FFFFFF;
+    width: 140px;
+    height: 15px;
+    white-space: nowrap;
+}
+
+.vakansiy_verx {
+    position: absolute;
+    top: 7%;
+    left: 56%;
+    color: #FFFFFF;
+    width: 140px;
+    height: 15px;
+    white-space: nowrap;
+}
+
+.pro_verx {
+    position: absolute;
+    top: 7%;
+    left: 63%;
+    color: #FFFFFF;
+    width: 140px;
+    height: 15px;
+    white-space: nowrap;
+}
+
+.spivrobitnuchtvo_verx {
+    position: absolute;
+    top: 7%;
+    left: 70%;
+    color: #FFFFFF;
+    width: 140px;
+    height: 15px;
+    white-space: nowrap;
+}
+
+#languageDropdown {
+    box-sizing: border-box;
+    position: absolute;
+    top: 5%;
+    left: 82%;
+    width: 96px;
+    height: 46px;
+    background: #1c1c1c;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(187, 187, 187, 0.08);
+    border-radius: 1000px;
+    outline: 1px solid #E1643C;
+    line-height: 46px; /* Aligns the text vertically in the center */
+    text-align: center; /* Aligns the text horizontally in the center */
+    -webkit-appearance: none; /* Remove default arrow in Chrome and Safari */
+    -moz-appearance: none; /* Remove default arrow in Firefox */
+    appearance: none;
+
+}
+
+
+#languageDropdown option {
+    background: #8a8888; /* Set the background color of the options */
+    border-radius: 12px; /* Set the border radius for rounded corners */
+    padding: 15px; /* Add some padding to the options */
+    color: white; /* Set the text color of the options */
+
+}
+
+
+.korzuna_verx {
+    position: absolute;
+    left: 91%;
+    top: 5%;
+    background: #1c1c1c;
+    outline: 1px solid #E1643C;
+    width: 45.25px; /* Размер изображения */
+    height: 45.25px; /* Размер изображения */
+    border-radius: 50%; /* Создаем круглую форму */
+    display: flex; /* Располагаем содержимое по центру по горизонтали и вертикали */
+    justify-content: center;
+    align-items: center;
+}
+
+.corzina_img_verx {
+    width: 60%;
+    height: 60%;
+}
+
+.search-panel {
+    position: absolute;
+    width: 408px;
+    height: 46px;
+    left: 43%;
+    top: 20%;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 22px;
+
+}
+
+
+img[alt="Search Icon"] {
+    position: absolute;
+    margin-left: -50px;
+    z-index: 9999;
+    /*border-radius: 50%;*/
+    /*outline: 1px solid #E1643C;*/
+}
+
+
+.search-panel input[type="text"] {
+    width: 90%;
+    height: 100%;
+    background: #1c1c1c;
+    box-shadow: 0 0 0 1px;
+    outline: 1px solid #a6a3a3;
+    border-radius: 22px;
+    color: #cbc9c9;
+    padding-left: 15px; /* Adjust the value as needed */
+}
+
+
+.call {
+    position: absolute;
+    left: 70%;
+    top: 20%;
+    background: #1c1c1c;
+    outline: 1px solid #E1643C;
+    width: 45.25px; /* Размер изображения */
+    height: 45.25px; /* Размер изображения */
+    border-radius: 50%; /* Создаем круглую форму */
+    display: flex; /* Располагаем содержимое по центру по горизонтали и вертикали */
+    justify-content: center;
+    align-items: center;
+}
+
+.call_img_verx {
+    width: 60%;
+    height: 60%;
+}
+
+.phone-numbers {
+    /*font-size: 18px;*/
+
+}
+
+.orange-number1 {
+    position: absolute;
+    color: #E1643C;
+    left: 75%;
+    top: 20%;
+}
+
+.orange-number2 {
+    position: absolute;
+    color: #E1643C;
+    left: 75%;
+    top: 23%;
+
+}
+
+.white-number1 {
+    color: white;
+    position: absolute;
+    left: 79.7%;
+    top: 20%;
+}
+
+.white-number2 {
+    color: white;
+    position: absolute;
+    left: 79.7%;
+    top: 23%;
+}
+
+.verx {
+    background-color: black;
+}
+
+
+.carta_tovara {
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 2cm;
+    margin-right: 2cm;
+
+
+    border-radius: 14px;
+
+}
+
+#languageToggle {
+    box-sizing: border-box;
+    position: absolute;
+    top: 5%;
+    left: 82%;
+    width: 96px;
+    height: 46px;
+    background: #1c1c1c;
+    color: #ffffff;
+    box-shadow: 0px 4px 4px rgba(187, 187, 187, 0.08);
+    border-radius: 1000px;
+    outline: 1px solid #e1643c;
+    line-height: 46px; /* Aligns the text vertically in the center */
+    text-align: center; /* Aligns the text horizontally in the center */
+    cursor: pointer;
+}
+
+.custom-container {
+    position: absolute;
+    margin-top: 88%;
+    margin-left: 2cm;
+    margin-right: 2cm;
+
+
+    border-radius: 14px;
+}
+
+
+.carta_tovara_item .card-title {
+    font-size: 22px;
+    line-height: 32px;
+    color: #FFFFFF;
+}
+
+.card-title.my-title a.short-name {
+    font-size: 18px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+.carta_tovara_item .card-text {
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: -55%;
+    color: #ADADAD;
+    font-family: "Arial", sans-serif;
+    font-style: italic;
+}
+
+
+.carta_tovara_item {
+    border-radius: 14px 14px 14px 14px;
+    margin-bottom: 3rem;
+    border: 2px solid gray;
+    width: 305px;
+    height: 450px;
+
+    /*background: rgba(255, 255, 255, 1)*/
+}
+
+.carta_tovara_item .card-img-top {
+    border-radius: 14px 14px 0px 0px;
+    width: 302px;
+    height: 215px;
+}
+
+
+.price_and_add {
+    margin-top: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: #E1643C;
+}
+
+.btnnn {
+    border-radius: 8px;
+
+    font-style: normal;
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height, or 122% */
+    background-color: #E1643C;
+    color: #FFFFFF;
+    border: 3px solid orangered; /* Золотая обводка */
+
+}
+
+
+.nuz {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    top: 350%;
+    background-color: #000000;
+}
+
+.carta_sity {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    font-style: normal;
+    font-weight: 450;
+    font-size: 24px;
+    line-height: 30px;
+    color: #373737;
+}
+
+.polosha_orange_nuz {
+    position: absolute;
+    top: 23%;
+    left: 30%;
+    width: 88px;
+    height: 3px;
+    background: #E1643C;
+}
+
+.doctavka_nuz {
+    position: absolute;
+    top: 32%;
+    left: 30%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.pro_nac {
+    position: absolute;
+    top: 42%;
+    left: 30%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.rolu_nuz {
+    position: absolute;
+    top: 52%;
+    left: 30%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.pizza_nuz {
+    position: absolute;
+    top: 62%;
+    left: 30%;
+    width: 191px;
+    height: 15px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.salate_nuz {
+    position: absolute;
+    top: 72%;
+    left: 30%;
+    width: 191px;
+    height: 15px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.ocnovni_nuz {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.garniru_nuz {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.supu_nuz {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.zakusku_nuz {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.gariche_nuz {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.hold_nuz {
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.puvo_nuz {
+    position: absolute;
+    top: 82%;
+    left: 30%;
+    width: 191px;
+    height: 15px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.contact_nuz {
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    font-style: normal;
+    font-weight: 450;
+    font-size: 24px;
+    line-height: 30px;
+    color: #373737;
+}
+
+.polosha_orange_nuz2 {
+    position: absolute;
+    top: 23%;
+    left: 70%;
+    width: 88px;
+    height: 3px;
+    background: #E1643C;
+}
+
+.number_nuz {
+    width: 413px;
+    height: 15px;
+    position: absolute;
+    top: 30%;
+    left: 70%;
+
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.number_nuz2 {
+    width: 413px;
+    height: 15px;
+    position: absolute;
+    top: 40%;
+    left: 70%;
+
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.email_nuz {
+    width: 413px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.adress_nuz {
+    width: 413px;
+    height: 15px;
+    position: absolute;
+    top: 60%;
+    left: 70%;
+
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.instagram {
+    position: absolute;
+    top: 72%;
+    left: 6%;
+}
+
+.telegram {
+    position: absolute;
+    top: 72%;
+    left: 10%;
+}
+
+.viber {
+    position: absolute;
+    top: 72%;
+    left: 14%;
+}
+
+.facebook {
+    position: absolute;
+    top: 72%;
+    left: 18%;
+}
+
+.prava_nuz {
+    position: absolute;
+    top: 82%;
+    left: 6%;
+}
+
+
+.link_roli {
+    position: absolute;
+    width: 40%;
+    height: 22px;
+    left: 5%;
+    top: 40%;
+    font-family: 'Futura PT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 22px;
+    color: #5e5e5e;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Плавное изменение цвета при ховере */
+}
+
+.link_roli:hover {
+    color: #E1643C; /* Изменение цвета на оранжевый при ховере */
+}
+
+.link_roli2 {
+    position: absolute;
+    width: 40%;
+    height: 22px;
+    left: 15%;
+    top: 40%;
+    font-family: 'Futura PT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 22px;
+    color: #fcfcfc;
+    text-decoration: none;
+}
+
+.link_roli2:hover {
+    text-decoration: none;
+    color: #fcfcfc;
+    /* Дополнительные свойства ховера по необходимости */
+}
+
+/*.bask_one{*/
+/*    position: absolute;*/
+/*    color: white;*/
+/*    left: 5%;*/
+/*    top: 50%;*/
+/*    font-size: 60px;*/
+/*}*/
