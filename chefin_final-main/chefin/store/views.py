@@ -19,6 +19,7 @@ from django.shortcuts import redirect
 from django.core.cache import cache
 from decimal import Decimal
 import json
+from django.http import HttpResponseBadRequest
 
 
 def menu(request):
@@ -177,27 +178,36 @@ def dostavka_ta_oplata(requests):
 
 
 def basket_add(request, product_id):
-    product = Product.objects.get(id=product_id)
-    request.session.setdefault('basket', {})
-    basket = request.session['basket']
-
     # Получение данных из тела запроса
     data = json.loads(request.body)
     comment = data.get('comment')
     product_poster = data.get('product_poster')
+    name = data.get('name')
+    print(name)
 
     # Создание JSON-представления товара с комментарием и постером
-    product_json = product.to_json()
-    product_json['comment'] = comment
-    product_json['product_poster'] = product_poster
+    product_json = {
+        'comment': comment,
+        'product_poster': product_poster,
+        'name': name,
+    }
 
+    # Получение или инициализация корзины в кеше
+    basket = request.session.get('basket', {})
+
+    # Проверка, что товар уже присутствует в корзине
+    if product_id in basket:
+        print('есть в корзине')
+        return HttpResponseBadRequest("Product already exists in the basket.")
+
+    # Добавление товара в корзину
     basket[product_id] = product_json
 
+    # Обновление корзины в кеше
+    request.session['basket'] = basket
     request.session.modified = True
+
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
-
 
 
 

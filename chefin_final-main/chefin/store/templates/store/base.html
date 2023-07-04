@@ -277,6 +277,9 @@ document.addEventListener('DOMContentLoaded', function () {
     addToCartButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
+            var element = document.querySelector('h5.modal-title#exampleModalLabel');
+            var name = element.textContent;
+            alert(name);
 
             // Получение комментария
             var commentId = button.getAttribute('data-product-id');
@@ -284,11 +287,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Получение product_poster
             var product_poster = document.getElementById('product_final_' + commentId).textContent;
-            alert(product_poster);
-
             // Получение ID продукта
-            var productId = button.getAttribute('data-product-id');
-            var url = '/baskets/add/' + productId + '/';
+            var url = '/baskets/add/' + product_poster + '/';
 
             fetch(url, {
                 method: 'POST',
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': '{{ csrf_token }}'
                 },
-                body: JSON.stringify({ product_id: productId, comment: comment, product_poster: product_poster })
+                body: JSON.stringify({ comment: comment, product_poster: product_poster, name: name })
             })
             .then(function (response) {
                 if (response.ok) {

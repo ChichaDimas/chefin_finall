@@ -175,6 +175,43 @@ body {
 
 }
 
+.pickup-info {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+
+    color: #FFF;
+    text-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.12);
+    font-size: 30px;
+}
+
+.adres_1 {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    color: #FFF;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.adres_1:hover {
+    color: #E1643C;
+}
+
+.adres_2 {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    color: #FFF;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.adres_2:hover {
+    color: #E1643C;
+}
+
+
 .home_number {
     position: absolute;
     top: 31%;
@@ -347,8 +384,9 @@ body {
 
 }
 
-.roundd_gotiv{
-        position: absolute;
+
+.roundd_gotiv {
+    position: absolute;
     margin-top: -25%;
     margin-left: 35%;
     width: 70px;
@@ -357,6 +395,7 @@ body {
     outline: 1px solid #f3eeeb;
     background: #1C1C1C;
 }
+
 .roundd {
     position: absolute;
     margin-top: -25%;
@@ -367,7 +406,9 @@ body {
     outline: 1px solid #E1643C;
     background: #1C1C1C;
 }
-.roundd_spavtu{
+
+
+.roundd_spavtu {
     position: absolute;
     margin-top: -25%;
     margin-left: 35%;
@@ -417,7 +458,6 @@ body {
 
     outline: 1px solid #E1643C;
 }
-
 
 .comment_do_zakaza {
     position: absolute;
@@ -487,20 +527,22 @@ body {
     z-index: -1;
 }
 
-.checker_zv{
+.checker_zv {
     position: absolute;
     top: 80%;
     right: 46%;
 
 }
-.dont_call{
+
+.dont_call {
     border: 1px solid #E1643C;
     background: #4d4c4c;
     width: 25px;
     height: 25px;
 
 }
-.txtttt1{
+
+.txtttt1 {
     color: white;
     font-size: 12px;
 

@@ -76,6 +76,7 @@
 <a class="link_oformleeny">/ Оформлення замовлення</a>
 
 <div class="oformlenia_zamovleny">Оформлення замовлення</div>
+
 <div class="block_chernui">
     <p class="ocobusti_danni">Особисті дані</p>
 
@@ -95,11 +96,26 @@
 
     <div class="pickup">
         <button class="pickup-button">Самовивіз</button>
-        {#        <img class="pickup-line" src="{% static 'store/img/line.png' %}" alt="Линия доставки">#}
+        <img class="pickup-line" src="{% static 'store/img/line.png' %}" alt="Линия доставки">
     </div>
+    <p class="pickup-info">Адреса наших закладів</p>
+
+    <a class="adres_1"
+       href="https://www.google.com/maps/search/?api=1&query=вул.+Івана+та+Юрія+Лип+60,+Одеса,+Одеська+область,+65000"
+       target="_blank">
+        <img src="{% static 'store/img/ph_map-pin-duotone.png' %} " alt="Изображение">
+        вул. Івана та Юрія Лип, 60, Одеса, Одеська область, 6500
+    </a>
+
+    <a class="adres_2"
+       href="https://www.google.com/maps/search/?api=1&query=вул.+Івана+та+Юрія+Лип+60,+Одеса,+Одеська+область,+65000"
+       target="_blank">
+        <img src="{% static 'store/img/ph_map-pin-duotone.png' %} " alt="Изображение">
+        вул. Івана та Юрія Лип, 60, Одеса, Одеська область, 6500
+    </a>
 
 
-    <p class="delivery_time">Час доставки</p>
+    <p class="delivery_time">Введiть зручний для Вас час</p>
     <input class="choose_delivery_time" type="text" placeholder="Введіть зручний для Вас час"/>
 
     <p class="delivery_persons">Кількість персон</p>
@@ -119,7 +135,7 @@
 
     <p class="oplata_type">Розрахунок</p>
 
-    <div class="button_na_cash">
+ <div class="button_na_cash">
         <button class="cash" id="cash" onclick="cash()">
             <div class="roundd_gotiv" id="roundd_gotiv">
                 <img src="{% static 'store/img/cash_img_white.png' %}" alt="Изображение" class="cash_img" id="cash_photo">
@@ -130,7 +146,7 @@
     </div>
 
 
-    <div class="button_na_cash_online">
+   <div class="button_na_cash_online">
         <button class="cash_online" onclick="cash_online()" id="cash_online">
             <div class="roundd" id="roundd">
                 <img src="{% static 'store/img/online_cash_orange.png' %}" alt="Изображение" class="cash_img" id="cash_online_photo">
@@ -141,7 +157,7 @@
     </div>
 
 
-    <div class="button_na_delivery_cash">
+   <div class="button_na_delivery_cash">
         <button class="delivery_cash" onclick="delivery_cash()" id="divilery_cash">
             <div class="roundd_spavtu" id="roundd_spavtu">
                 <img src="{% static 'store/img/cssshh.svg' %}" alt="Изображение" class="cash_img" id="dilivery_photo">
@@ -199,8 +215,7 @@
             roundd_gotiv.style.outline = '1px solid #f3eeeb';
             let cash_photo = document.getElementById('cash_photo')
             cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
-
-            let divilery_cash = document.getElementById('divilery_cash')
+                let divilery_cash = document.getElementById('divilery_cash')
             divilery_cash.style.color = "#f3eeeb";
             divilery_cash.style.outline = '1px solid #f3eeeb';
             let roundd_spavtu = document.getElementById('roundd_spavtu')
@@ -236,6 +251,7 @@
             dilivery_photo.src = "{% static 'store/img/credit_cart_white.png' %}"
         }
     </script>
+
 
     <p class="comment_do_zakaza">Коментарій до замовлення</p>
     <input class="comment_do_zakaza_pole" type="text" placeholder="Ваш коментарій*"/>
@@ -296,10 +312,62 @@
     <img class="facebook" src="{% static 'store/img/facebook.png' %}" alt="logo">
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
+
+   $(document).ready(function () {
+  // Скрыть поля адреса при загрузке страницы
+  $(".pickup-info, .pickup-line, .adres_1, .adres_2").hide();
+
+  // По умолчанию выбрана доставка
+  $(".delivery-button").addClass("active").css("color", "white");
+  $(".pickup-button").css("color", "#f3edec");
+
+  // Показать поля адреса при открытии страницы, если выбрана доставка
+  if ($(".delivery-button").hasClass("active")) {
+    $(".street, .home_number, .home_gear, .home_room").show();
+  } else {
+    $(".street, .home_number, .home_gear, .home_room").hide();
+  }
+
+  // Обработчик нажатия на кнопку "Доставка"
+  $(".delivery-button").click(function () {
+    if (!$(this).hasClass("active")) {
+      // Показать поля адреса
+      $(".street, .home_number, .home_gear, .home_room").show();
+      // Скрыть информацию о самовывозе и адресах
+      $(".pickup-info, .pickup-line, .adres_1, .adres_2").hide();
+      // Изменить стиль кнопки "Доставка"
+      $(this).addClass("active").css("color", "white");
+      // Изменить стиль кнопки "Самовивіз"
+      $(".pickup-button").removeClass("active").css("color", "#f3edec");
+      // Показать изображение доставки
+      $(".delivery-image").show();
+    }
+  });
+
+  // Обработчик нажатия на кнопку "Самовивіз"
+  $(".pickup-button").click(function () {
+    if (!$(this).hasClass("active")) {
+      // Скрыть поля адреса
+      $(".street, .home_number, .home_gear, .home_room").hide();
+      // Показать информацию о самовывозе и адресах
+      $(".pickup-info, .pickup-line, .adres_1, .adres_2").show();
+      // Изменить стиль кнопки "Самовивіз"
+      $(this).addClass("active").css("color", "#f3edec");
+      // Изменить стиль кнопки "Доставка"
+      $(".delivery-button").removeClass("active").css("color", "white");
+      // Скрыть изображение доставки
+      $(".delivery-image").hide();
+    }
+  });
+});
+
+
+
 </script>
+
 
 </body>
 </html>
