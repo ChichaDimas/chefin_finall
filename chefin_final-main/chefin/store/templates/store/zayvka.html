@@ -77,6 +77,229 @@
 
 <div class="oformlenia_zamovleny">Оформлення замовлення</div>
 <div class="block_chernui">
-<div class="ocobusti_danni">Особисті дані</div>
-    <input>
+    <p class="ocobusti_danni">Особисті дані</p>
+
+    <input class="name" type="text" placeholder="Ваше ім'я"/>
+    <input class="number" type="text" placeholder="Ваш телефон"/>
+
+
+    <div class="delivery">
+        <button class="delivery-button">Доставка</button>
+        <img class="delivery-image" src="{% static 'store/img/line.png' %}" alt="Линия доставки">
+    </div>
+    <input class="street" type="text" placeholder="Вулиця*"/>
+    <input class="home_number" type="text" placeholder="Номер будинку*"/>
+    <input class="home_gear" type="text" placeholder="Поверх*"/>
+    <input class="home_room" type="text" placeholder="Квартира*"/>
+
+
+    <div class="pickup">
+        <button class="pickup-button">Самовивіз</button>
+        {#        <img class="pickup-line" src="{% static 'store/img/line.png' %}" alt="Линия доставки">#}
+    </div>
+
+
+    <p class="delivery_time">Час доставки</p>
+    <input class="choose_delivery_time" type="text" placeholder="Введіть зручний для Вас час"/>
+
+    <p class="delivery_persons">Кількість персон</p>
+
+    <select class="form-select delivery_count" aria-label="Default select example">
+        <option selected>1</option>
+        <option value="1">2</option>
+        <option value="2">3</option>
+        <option value="3">4</option>
+        <option value="3">5</option>
+        <option value="3">6</option>
+        <option value="3">7</option>
+        <option value="3">8</option>
+        <option value="3">9</option>
+
+    </select>
+
+    <p class="oplata_type">Розрахунок</p>
+
+    <div class="button_na_cash">
+        <button class="cash" id="cash" onclick="cash()">
+            <div class="roundd_gotiv" id="roundd_gotiv">
+                <img src="{% static 'store/img/cash_img_white.png' %}" alt="Изображение" class="cash_img" id="cash_photo">
+            </div>
+            Готівкою при отриманні
+
+        </button>
+    </div>
+
+
+    <div class="button_na_cash_online">
+        <button class="cash_online" onclick="cash_online()" id="cash_online">
+            <div class="roundd" id="roundd">
+                <img src="{% static 'store/img/online_cash_orange.png' %}" alt="Изображение" class="cash_img" id="cash_online_photo">
+            </div>
+            Сплатити онлайн
+        </button>
+
+    </div>
+
+
+    <div class="button_na_delivery_cash">
+        <button class="delivery_cash" onclick="delivery_cash()" id="divilery_cash">
+            <div class="roundd_spavtu" id="roundd_spavtu">
+                <img src="{% static 'store/img/cssshh.svg' %}" alt="Изображение" class="cash_img" id="dilivery_photo">
+            </div>
+            Сплатити картою при отриманні
+        </button>
+
+    </div>
+
+    <script>
+
+        function cash(){
+            let cash_online = document.getElementById('cash_online')
+            cash_online.style.color = "#f3eeeb";
+            cash_online.style.outline = '1px solid #f3eeeb';
+            let roundd = document.getElementById('roundd')
+            roundd.style.outline = '1px solid #f3eeeb';
+            let cash_online_photo = document.getElementById('cash_online_photo')
+            cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
+
+
+
+            let cash = document.getElementById('cash')
+            cash.style.color = "#E1643C";
+            cash.style.outline = '1px solid #E1643C';
+            let roundd_gotiv = document.getElementById('roundd_gotiv')
+            roundd_gotiv.style.outline = '1px solid #E1643C';
+            let cash_photo = document.getElementById('cash_photo')
+            cash_photo.src = "{% static 'store/img/cash_img.png' %}"
+
+
+            let divilery_cash = document.getElementById('divilery_cash')
+            divilery_cash.style.color = "#f3eeeb";
+            divilery_cash.style.outline = '1px solid #f3eeeb';
+            let roundd_spavtu = document.getElementById('roundd_spavtu')
+            roundd_spavtu.style.outline = '1px solid #f3eeeb';
+            let dilivery_photo = document.getElementById('dilivery_photo')
+            dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
+        }
+        function cash_online() {
+            let cash_online = document.getElementById('cash_online')
+            cash_online.style.color = "#E1643C";
+            cash_online.style.outline = '1px solid #E1643C';
+            let roundd = document.getElementById('roundd')
+            roundd.style.outline = '1px solid #E1643C';
+            let cash_online_photo = document.getElementById('cash_online_photo')
+            cash_online_photo.src = "{% static 'store/img/online_cash_orange.png' %}"
+
+
+
+            let cash = document.getElementById('cash')
+            cash.style.color = "#f3eeeb";
+            cash.style.outline = '1px solid #f3eeeb';
+            let roundd_gotiv = document.getElementById('roundd_gotiv')
+            roundd_gotiv.style.outline = '1px solid #f3eeeb';
+            let cash_photo = document.getElementById('cash_photo')
+            cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
+
+            let divilery_cash = document.getElementById('divilery_cash')
+            divilery_cash.style.color = "#f3eeeb";
+            divilery_cash.style.outline = '1px solid #f3eeeb';
+            let roundd_spavtu = document.getElementById('roundd_spavtu')
+            roundd_spavtu.style.outline = '1px solid #f3eeeb';
+            let dilivery_photo = document.getElementById('dilivery_photo')
+            dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
+        }
+        function delivery_cash(){
+            let cash_online = document.getElementById('cash_online')
+            cash_online.style.color = "#f3eeeb";
+            cash_online.style.outline = '1px solid #f3eeeb';
+            let roundd = document.getElementById('roundd')
+            roundd.style.outline = '1px solid #f3eeeb';
+            let cash_online_photo = document.getElementById('cash_online_photo')
+            cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
+
+
+            let cash = document.getElementById('cash')
+            cash.style.color = "#f3eeeb";
+            cash.style.outline = '1px solid #f3eeeb';
+            let roundd_gotiv = document.getElementById('roundd_gotiv')
+            roundd_gotiv.style.outline = '1px solid #f3eeeb';
+            let cash_photo = document.getElementById('cash_photo')
+            cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
+
+
+            let divilery_cash = document.getElementById('divilery_cash')
+            divilery_cash.style.color = "#E1643C";
+            divilery_cash.style.outline = '1px solid #E1643C';
+            let roundd_spavtu = document.getElementById('roundd_spavtu')
+            roundd_spavtu.style.outline = '1px solid #E1643C';
+            let dilivery_photo = document.getElementById('dilivery_photo')
+            dilivery_photo.src = "{% static 'store/img/credit_cart_white.png' %}"
+        }
+    </script>
+
+    <p class="comment_do_zakaza">Коментарій до замовлення</p>
+    <input class="comment_do_zakaza_pole" type="text" placeholder="Ваш коментарій*"/>
+
+    <button type="button" class="btn btn-outline-success btn_add_to"
+    >Підтвердити замовлення
+    </button>
+
+
+    <div class="form-check checker_zv">
+
+
+        <input class="form-check-input dont_call" type="checkbox" value=""
+               id="flexCheckDefault">
+        <label class="form-check-label txtttt1" for="flexCheckDefault">
+            Мені можна не телефонувати для підтвердження замовлення
+        </label>
+    </div>
+
 </div>
+
+<div class="nuz1">
+    <div class="carta_sity">Карта сайту</div>
+    <div class="polosha_orange_nuz"></div>
+    <div class="doctavka_nuz">Доставка та оплата</div>
+    <div class="pro_nac">Про нас</div>
+    <div class="rolu_nuz">Роли</div>
+    <div class="pizza_nuz">Піца</div>
+    <div class="salate_nuz">Салати</div>
+    <div class="ocnovni_nuz">Основні страви</div>
+    <div class="garniru_nuz">Гарніри</div>
+    <div class="supu_nuz">Супи</div>
+    <div class="zakusku_nuz">Закуски</div>
+    <div class="gariche_nuz">Гаряче</div>
+    <div class="hold_nuz">Холодні напої</div>
+    <div class="puvo_nuz">Пиво</div>
+    <div class="contact_nuz">Контакти</div>
+    <div class="polosha_orange_nuz2"></div>
+    <div class="number_nuz">+38 (050) 012-01-01</div>
+    <div class="number_nuz2">+38 (066) 670-10-01</div>
+    <div class="email_nuz">chef.in.ua@gmail.com</div>
+    <div class="adress_nuz">Катерининська площа, Одеса, Одеська область, 65000</div>
+    <div class="prava_nuz">© 2023 | Усі права захищені</div>
+    <header>
+        <div class="">
+            <div class="header">
+                <div class="rounded-gradient-border container_logo">
+                    <div class="rounded-logo">
+                        <img class="imm" src="{% static 'store/img/logoi.svg' %}" alt="logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <img class="instagram" src="{% static 'store/img/instagram.png' %}" alt="logo">
+    <img class="telegram" src="{% static 'store/img/telegram.png' %}" alt="logo">
+    <img class="viber" src="{% static 'store/img/viber.png' %}" alt="logo">
+    <img class="facebook" src="{% static 'store/img/facebook.png' %}" alt="logo">
+</div>
+
+
+<script>
+
+</script>
+
+</body>
+</html>

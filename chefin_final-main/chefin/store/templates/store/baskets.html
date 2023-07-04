@@ -97,7 +97,7 @@
                                 </button>
                             </div>
 
-                            <button onclick="button()">nasd</button>
+                            <button onclick="button('{{ basket.id }}', '{{ basket.product_poster }}')">nasd</button>
                             <p class="card-text" style="color: white" id="product_poster">{{ basket.product_poster }}</p>
                             <p style="color: white">{{ basket.id }}</p>
                             <p style="color: white">{{ basket.comment }}</p>
@@ -117,29 +117,29 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-function button() {
+function button(basketId, productPoster) {
     let inputValue = document.querySelector('.quantity-input').value;
-    let product_poster = document.getElementById('product_poster').textContent;
-    alert(product_poster)
-    const csrfToken = '{{ csrf_token }}';
+    alert(productPoster);
 
+    const csrfToken = '{{ csrf_token }}';
     var url = '/inform/';
+
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrfToken
         },
-        body: JSON.stringify({ number: inputValue, product_poster: product_poster })
+        body: JSON.stringify({ number: inputValue, product_poster: productPoster, basket_id: basketId })
     })
-        .then(function (response) {
-            if (response.ok) {
-                alert('yes');
-            }
-        })
-        .catch(function (error) {
-            alert('no');
-        });
+    .then(function (response) {
+        if (response.ok) {
+            alert('yes');
+        }
+    })
+    .catch(function (error) {
+        alert('no');
+    });
 }
 
 </script>
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    <a class="btn btn-success btn-lg float-end btn_oformity_zakaz" href="../orders/order-create.html">
+    <a class="btn btn-success btn-lg float-end btn_oformity_zakaz" href="{% url 'zayvka' %}">
         Оформити замовлення
     </a>
 </div>
