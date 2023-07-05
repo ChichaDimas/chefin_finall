@@ -184,11 +184,11 @@ def cart_info(request):
     for product_id, item in basket.items():
         item['id'] = product_id
         basket_items.append(item)
-    print(basket_items)
+
 
     # Получение списка значений product_poster из товаров в корзине
     product_posters = [item['product_poster'] for item in basket_items]
-    print(product_posters)
+
 
     # Возврат информации о товарах в корзине в формате JSON
     return JsonResponse({'items': basket_items, 'product_posters': product_posters})
@@ -275,8 +275,7 @@ def inform(request):
         body = json.loads(request.body.decode('utf-8'))
         quantity = body.get('number')
         product_poster = body.get('product_poster')
-        print(quantity)
-        print(product_poster)
+
         if quantity is not None:
             # Обработка значения quantity
             # ...
@@ -312,6 +311,7 @@ def zayvka(request):
         print(comment_do_zakaza)
 
         return redirect('zayvka')
+        # return render(request, 'store/zayvka.html')
 
     # return redirect('zayvka')
     return render(request, 'store/zayvka.html')
@@ -364,50 +364,50 @@ def add_to_cart(request):
 
 
 
-# def add_to_cart(request):
-#     print("функция сработала")
-#     api_url = 'https://api.fondy.eu/api/checkout/url/'
-#     merchant_id = '1397120'
-#     secret_key = 'Not for tests. Test credentials: https://docs.fondy.eu/docs/page/2/'
-#
-#     data = {
-#         "currency": "UAH",
-#         "amount": 12000
-#     }
-#
-#     headers = {
-#         'Content-Type': 'application/json',
-#         'Authorization': f'Basic {merchant_id}:{secret_key}'
-#     }
-#
-#     response = requests.post(api_url, json=data, headers=headers)
-#     if response.status_code == 200:
-#         checkout_url = response.json().get('checkout_url')
-#         response_data = {
-#             'url': checkout_url
-#         }
-#         return JsonResponse(response_data)
-#     else:
-#         # Обработка ошибки, если необходимо
-#         return HttpResponse('Error')
+def add_to_cart(request):
+    print("функция сработала")
+    api_url = 'https://api.fondy.eu/api/checkout/url/'
+    merchant_id = '1397120'
+    secret_key = 'Not for tests. Test credentials: https://docs.fondy.eu/docs/page/2/'
+
+    data = {
+        "currency": "UAH",
+        "amount": 12000
+    }
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Basic {merchant_id}:{secret_key}'
+    }
+
+    response = requests.post(api_url, json=data, headers=headers)
+    if response.status_code == 200:
+        checkout_url = response.json().get('checkout_url')
+        response_data = {
+            'url': checkout_url
+        }
+        return JsonResponse(response_data)
+    else:
+        # Обработка ошибки, если необходимо
+        return HttpResponse('Error')
 
 
 
-# def add_to_cart(request):
-#     print(9999)
-#     api = Api(merchant_id=1397120,
-#               secret_key='Not for tests. Test credentials: https://docs.fondy.eu/docs/page/2/ ')
-#     checkout = Checkout(api=api)
-#     data = {
-#         "currency": "UAH",
-#         "amount": 12000
-#     }
-#     url = checkout.url(data).get('checkout_url')
-#     context = {
-#         'title':'Store',
-#         'url': url
-#     }
-#     return render(request,'store/add_to_cart.html',context)
+def add_to_cart(request):
+    print(9999)
+    api = Api(merchant_id=1397120,
+              secret_key='Not for tests. Test credentials: https://docs.fondy.eu/docs/page/2/ ')
+    checkout = Checkout(api=api)
+    data = {
+        "currency": "UAH",
+        "amount": 12000
+    }
+    url = checkout.url(data).get('checkout_url')
+    context = {
+        'title':'Store',
+        'url': url
+    }
+    return render(request,'store/add_to_cart.html',context)
 
 
 

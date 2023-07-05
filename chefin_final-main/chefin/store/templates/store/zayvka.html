@@ -160,8 +160,8 @@
         <input class="delivery_count" type="text" name="delivery_count" placeholder="1" value="1"/>
 
 
-        <p class="oplata_type">Розрахунок</p>
 
+        <p class="oplata_type">Розрахунок</p>
         <div class="button_na_cash">
             <button class="cash" id="cash" onclick="cash()">
                 <div class="roundd_gotiv" id="roundd_gotiv">
@@ -169,41 +169,21 @@
                          id="cash_photo">
                 </div>
                 Готівкою при отриманні
+
             </button>
         </div>
 
 
         <div class="button_na_cash_online">
-            <button class="cash_online" onclick="add_to_cart()" id="cash_online">
+            <button class="cash_online" onclick="cash_online()" id="cash_online">
                 <div class="roundd" id="roundd">
                     <img src="{% static 'store/img/online_cash_orange.png' %}" alt="Изображение" class="cash_img"
                          id="cash_online_photo">
                 </div>
                 Сплатити онлайн
             </button>
+
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            function add_to_cart() {
-                alert(12344);
-                $.ajax({
-
-                    url: '/add_to_cart/',  // Замените на правильный URL для обработки запроса в вашем приложении
-                    type: 'POST',
-                    dataType: 'json',  // Указываем ожидаемый тип данных в ответе (JSON)
-                    success: function (response) {
-                        // Перенаправление пользователя на страницу оплаты Fondy
-                        window.location.href = response.url;
-                    },
-                    error: function (error) {
-                        console.log(error);
-                        // Обработка ошибки, если необходимо
-                    }
-                });
-            }
-
-        </script>
 
 
         <div class="button_na_delivery_cash">
@@ -218,96 +198,97 @@
         </div>
 
         <script>
-            function cash() {
-                let cash_online = document.getElementById('cash_online')
-                cash_online.style.color = "#f3eeeb";
-                cash_online.style.outline = '1px solid #f3eeeb';
-                let roundd = document.getElementById('roundd')
-                roundd.style.outline = '1px solid #f3eeeb';
-                let cash_online_photo = document.getElementById('cash_online_photo')
-                cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
+  document.addEventListener('DOMContentLoaded', function() {
+    var cashButton = document.getElementById('cash');
+    var cashOnlineButton = document.getElementById('cash_online');
+    var deliveryCashButton = document.getElementById('divilery_cash');
+    var cashOnlinePhoto = document.getElementById('cash_online_photo');
+    var cashPhoto = document.getElementById('cash_photo');
+    var deliveryPhoto = document.getElementById('dilivery_photo');
 
+    cashButton.addEventListener('click', function() {
+      cash();
+    });
 
-                let cash = document.getElementById('cash')
-                cash.style.color = "#E1643C";
-                cash.style.outline = '1px solid #E1643C';
-                let roundd_gotiv = document.getElementById('roundd_gotiv')
-                roundd_gotiv.style.outline = '1px solid #E1643C';
-                let cash_photo = document.getElementById('cash_photo')
-                cash_photo.src = "{% static 'store/img/cash_img.png' %}"
+    cashOnlineButton.addEventListener('click', function() {
+      cash_online();
+    });
 
+    deliveryCashButton.addEventListener('click', function() {
+      delivery_cash();
+    });
 
-                let divilery_cash = document.getElementById('divilery_cash')
-                divilery_cash.style.color = "#f3eeeb";
-                divilery_cash.style.outline = '1px solid #f3eeeb';
-                let roundd_spavtu = document.getElementById('roundd_spavtu')
-                roundd_spavtu.style.outline = '1px solid #f3eeeb';
-                let dilivery_photo = document.getElementById('dilivery_photo')
-                dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
-            }
+    function cash() {
+      cashOnlineButton.style.color = '#f3eeeb';
+      cashOnlineButton.style.outline = '1px solid #f3eeeb';
+      var roundd = document.getElementById('roundd');
+      roundd.style.outline = '1px solid #f3eeeb';
+      cashOnlinePhoto.src = "{% static 'store/img/online_cash.png' %}";
 
-            function cash_online() {
-                let cash_online = document.getElementById('cash_online')
-                cash_online.style.color = "#E1643C";
-                cash_online.style.outline = '1px solid #E1643C';
-                let roundd = document.getElementById('roundd')
-                roundd.style.outline = '1px solid #E1643C';
-                let cash_online_photo = document.getElementById('cash_online_photo')
-                cash_online_photo.src = "{% static 'store/img/online_cash_orange.png' %}"
+      cashButton.style.color = '#E1643C';
+      cashButton.style.outline = '1px solid #E1643C';
+      var rounddGotiv = document.getElementById('roundd_gotiv');
+      rounddGotiv.style.outline = '1px solid #E1643C';
+      cashPhoto.src = "{% static 'store/img/cash_img.png' %}";
 
+      deliveryCashButton.style.color = '#f3eeeb';
+      deliveryCashButton.style.outline = '1px solid #f3eeeb';
+      var rounddSpavtu = document.getElementById('roundd_spavtu');
+      rounddSpavtu.style.outline = '1px solid #f3eeeb';
+      deliveryPhoto.src = "{% static 'store/img/cssshh.svg' %}";
+    }
 
-                let cash = document.getElementById('cash')
-                cash.style.color = "#f3eeeb";
-                cash.style.outline = '1px solid #f3eeeb';
-                let roundd_gotiv = document.getElementById('roundd_gotiv')
-                roundd_gotiv.style.outline = '1px solid #f3eeeb';
-                let cash_photo = document.getElementById('cash_photo')
-                cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
-                let divilery_cash = document.getElementById('divilery_cash')
-                divilery_cash.style.color = "#f3eeeb";
-                divilery_cash.style.outline = '1px solid #f3eeeb';
-                let roundd_spavtu = document.getElementById('roundd_spavtu')
-                roundd_spavtu.style.outline = '1px solid #f3eeeb';
-                let dilivery_photo = document.getElementById('dilivery_photo')
-                dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
-            }
+    function cash_online() {
+      cashOnlineButton.style.color = '#E1643C';
+      cashOnlineButton.style.outline = '1px solid #E1643C';
+      var roundd = document.getElementById('roundd');
+      roundd.style.outline = '1px solid #E1643C';
+      cashOnlinePhoto.src = "{% static 'store/img/online_cash_orange.png' %}";
 
-            function delivery_cash() {
-                let cash_online = document.getElementById('cash_online')
-                cash_online.style.color = "#f3eeeb";
-                cash_online.style.outline = '1px solid #f3eeeb';
-                let roundd = document.getElementById('roundd')
-                roundd.style.outline = '1px solid #f3eeeb';
-                let cash_online_photo = document.getElementById('cash_online_photo')
-                cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
+      cashButton.style.color = '#f3eeeb';
+      cashButton.style.outline = '1px solid #f3eeeb';
+      var rounddGotiv = document.getElementById('roundd_gotiv');
+      rounddGotiv.style.outline = '1px solid #f3eeeb';
+      cashPhoto.src = "{% static 'store/img/cash_img_white.png' %}";
 
+      deliveryCashButton.style.color = '#f3eeeb';
+      deliveryCashButton.style.outline = '1px solid #f3eeeb';
+      var rounddSpavtu = document.getElementById('roundd_spavtu');
+      rounddSpavtu.style.outline = '1px solid #f3eeeb';
+      deliveryPhoto.src = "{% static 'store/img/cssshh.svg' %}";
+    }
 
-                let cash = document.getElementById('cash')
-                cash.style.color = "#f3eeeb";
-                cash.style.outline = '1px solid #f3eeeb';
-                let roundd_gotiv = document.getElementById('roundd_gotiv')
-                roundd_gotiv.style.outline = '1px solid #f3eeeb';
-                let cash_photo = document.getElementById('cash_photo')
-                cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
+    function delivery_cash() {
+      cashOnlineButton.style.color = '#f3eeeb';
+      cashOnlineButton.style.outline = '1px solid #f3eeeb';
+      var roundd = document.getElementById('roundd');
+      roundd.style.outline = '1px solid #f3eeeb';
+      cashOnlinePhoto.src = "{% static 'store/img/online_cash.png' %}";
 
+      cashButton.style.color = '#f3eeeb';
+      cashButton.style.outline = '1px solid #f3eeeb';
+      var rounddGotiv = document.getElementById('roundd_gotiv');
+      rounddGotiv.style.outline = '1px solid #f3eeeb';
+      cashPhoto.src = "{% static 'store/img/cash_img_white.png' %}";
 
-                let divilery_cash = document.getElementById('divilery_cash')
-                divilery_cash.style.color = "#E1643C";
-                divilery_cash.style.outline = '1px solid #E1643C';
-                let roundd_spavtu = document.getElementById('roundd_spavtu')
-                roundd_spavtu.style.outline = '1px solid #E1643C';
-                let dilivery_photo = document.getElementById('dilivery_photo')
-                dilivery_photo.src = "{% static 'store/img/cssshh_orange.svg' %}"
-            }
-        </script>
+      deliveryCashButton.style.color = '#E1643C';
+      deliveryCashButton.style.outline = '1px solid #E1643C';
+      var rounddSpavtu = document.getElementById('roundd_spavtu');
+      rounddSpavtu.style.outline = '1px solid #E1643C';
+      deliveryPhoto.src = "{% static 'store/img/credit_cart_white.png' %}";
+    }
+  });
+</script>
 
 
         <p class="comment_do_zakaza">Коментарій до замовлення</p>
         <input class="comment_do_zakaza_pole" name="comment_do_zakaza" type="text" placeholder="Ваш коментарій*"/>
 
-        <button type="button" class="btn btn-outline-success btn_add_to" onclick="submitOrder()">
+
+        <button type="submit" class="btn btn-outline-success btn_add_to">
             Підтвердити замовлення
         </button>
+
 
         <div class="form-check checker_zv">
             <input class="form-check-input dont_call" type="checkbox" value="" id="flexCheckDefault">
@@ -320,14 +301,22 @@
 
 
 <script>
-    function submitOrder() {
-        // Получение формы по ее идентификатору
-        var form = document.getElementById('orderForm');
+    document.addEventListener('DOMContentLoaded', function () {
+        var orderForm = document.getElementById('orderForm');
+        var submitButton = document.querySelector('.btn_add_to');
+        var otherButtons = document.querySelectorAll('button:not(.btn_add_to)');
 
-        // Отправка формы
-        form.submit();
-    }
+        submitButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            orderForm.submit();
+        });
+
+        otherButtons.forEach(function (button) {
+            button.setAttribute('type', 'button');
+        });
+    });
 </script>
+
 
 <div class="nuz1">
     <div class="carta_sity">Карта сайту</div>
@@ -368,9 +357,9 @@
     <img class="facebook" src="{% static 'store/img/facebook.png' %}" alt="logo">
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
 
     $(document).ready(function () {
         // Скрыть поля адреса при загрузке страницы
