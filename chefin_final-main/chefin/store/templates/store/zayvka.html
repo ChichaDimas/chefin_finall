@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- Подключение стилей и скриптов для flatpickr -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="{% static 'store/css/basket.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/zayvka.css' %}">
 </head>
@@ -79,219 +79,255 @@
 
 <div class="oformlenia_zamovleny">Оформлення замовлення</div>
 
-<div class="block_chernui">
-    <p class="ocobusti_danni">Особисті дані</p>
 
-    <input class="name" type="text" placeholder="Ваше ім'я"/>
-    <input class="number" type="text" placeholder="Ваш телефон"/>
+<form id="orderForm" method="POST" action="{% url 'zayvka' %}">
+    {% csrf_token %}
+    <div class="block_chernui">
+        <p class="ocobusti_danni">Особисті дані</p>
 
-
-    <div class="delivery">
-        <button class="delivery-button">Доставка</button>
-        <img class="delivery-image" src="{% static 'store/img/line.png' %}" alt="Линия доставки">
-    </div>
-    <input class="street" type="text" placeholder="Вулиця*"/>
-    <input class="home_number" type="text" placeholder="Номер будинку*"/>
-    <input class="home_gear" type="text" placeholder="Поверх*"/>
-    <input class="home_room" type="text" placeholder="Квартира*"/>
+        <input class="name" type="text" name="name" placeholder="Ваше ім'я"/>
+        <input class="number" type="text" name="number" placeholder="Ваш телефон"/>
 
 
-    <div class="pickup">
-        <button class="pickup-button">Самовивіз</button>
-        <img class="pickup-line" src="{% static 'store/img/line.png' %}" alt="Линия доставки">
-    </div>
-    <p class="pickup-info">Адреса наших закладів</p>
-
-    <a class="adres_1"
-       href="https://www.google.com/maps/search/?api=1&query=вул.+Івана+та+Юрія+Лип+60,+Одеса,+Одеська+область,+65000"
-       target="_blank">
-        <img src="{% static 'store/img/ph_map-pin-duotone.png' %} " alt="Изображение">
-        вул. Івана та Юрія Лип, 60, Одеса, Одеська область, 6500
-    </a>
-
-    <a class="adres_2"
-       href="https://www.google.com/maps/search/?api=1&query=вул.+Івана+та+Юрія+Лип+60,+Одеса,+Одеська+область,+65000"
-       target="_blank">
-        <img src="{% static 'store/img/ph_map-pin-duotone.png' %} " alt="Изображение">
-        вул. Івана та Юрія Лип, 60, Одеса, Одеська область, 6500
-    </a>
+        <div class="delivery">
+            <button class="delivery-button">Доставка</button>
+            <img class="delivery-image" src="{% static 'store/img/line.png' %}" alt="Линия доставки">
+        </div>
+        <input class="street" type="text" name="street" placeholder="Вулиця*"/>
+        <input class="home_number" type="text" name="home_number" placeholder="Номер будинку*"/>
+        <input class="home_gear" type="text" name="home_gear" placeholder="Поверх*"/>
+        <input class="home_room" type="text" name="home_room" placeholder="Квартира*"/>
 
 
-    <p class="delivery_time">Введiть зручний для Вас час</p>
-    <input class="choose_delivery_time" type="text" placeholder="Введіть зручний для Вас час"/>
+        <div class="pickup">
+            <button class="pickup-button">Самовивіз</button>
+            <img class="pickup-line" src="{% static 'store/img/line.png' %}" alt="Линия доставки">
+        </div>
+        <p class="pickup-info">Адреса наших закладів</p>
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-    // Получение элемента поля выбора времени
-var inputElement = document.querySelector('.choose_delivery_time');
+        <a class="adres_1"
+           href="https://www.google.com/maps/search/?api=1&query=вул.+Івана+та+Юрія+Лип+60,+Одеса,+Одеська+область,+65000"
+           target="_blank">
+            <img src="{% static 'store/img/ph_map-pin-duotone.png' %} " alt="Изображение">
+            вул. Івана та Юрія Лип, 60, Одеса, Одеська область, 6500
+        </a>
 
-// Инициализация flatpickr для поля выбора времени
-flatpickr(inputElement, {
-  enableTime: true,
-  noCalendar: true,
-  dateFormat: 'H:i',
-  time_24hr: true,
-  minTime: '08:00',
-  maxTime: '21:00',
-  // Другие настройки, если необходимо
-});
-
-</script>
-
-    <p class="delivery_persons">Кількість персон</p>
-
-    <select class="form-select delivery_count" aria-label="Default select example">
-        <option selected>1</option>
-        <option value="1">2</option>
-        <option value="2">3</option>
-        <option value="3">4</option>
-        <option value="3">5</option>
-        <option value="3">6</option>
-        <option value="3">7</option>
-        <option value="3">8</option>
-        <option value="3">9</option>
-
-    </select>
-
-    <p class="oplata_type">Розрахунок</p>
-
- <div class="button_na_cash">
-        <button class="cash" id="cash" onclick="cash()">
-            <div class="roundd_gotiv" id="roundd_gotiv">
-                <img src="{% static 'store/img/cash_img_white.png' %}" alt="Изображение" class="cash_img" id="cash_photo">
-            </div>
-            Готівкою при отриманні
-
-        </button>
-    </div>
+        <a class="adres_2"
+           href="https://www.google.com/maps/search/?api=1&query=вул.+Івана+та+Юрія+Лип+60,+Одеса,+Одеська+область,+65000"
+           target="_blank">
+            <img src="{% static 'store/img/ph_map-pin-duotone.png' %} " alt="Изображение">
+            вул. Івана та Юрія Лип, 60, Одеса, Одеська область, 6500
+        </a>
 
 
-   <div class="button_na_cash_online">
-        <button class="cash_online" onclick="cash_online()" id="cash_online">
-            <div class="roundd" id="roundd">
-                <img src="{% static 'store/img/online_cash_orange.png' %}" alt="Изображение" class="cash_img" id="cash_online_photo">
-            </div>
-            Сплатити онлайн
-        </button>
+        <p class="delivery_time">Введiть зручний для Вас час</p>
+        <input class="choose_delivery_time" type="text" name="delivery_time" placeholder="Введіть зручний для Вас час"/>
 
-    </div>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script>
+            // Получение элемента поля выбора времени
+            var inputElement = document.querySelector('.choose_delivery_time');
 
+            // Получение текущей даты и времени
+            var currentDate = new Date();
 
-   <div class="button_na_delivery_cash">
-        <button class="delivery_cash" onclick="delivery_cash()" id="divilery_cash">
-            <div class="roundd_spavtu" id="roundd_spavtu">
-                <img src="{% static 'store/img/cssshh.svg' %}" alt="Изображение" class="cash_img" id="dilivery_photo">
-            </div>
-            Сплатити картою при отриманні
-        </button>
+            // Установка смещения времени GMT+3 (180 минут)
+            var offset = 0;
 
-    </div>
+            // Добавление смещения времени
+            currentDate.setMinutes(currentDate.getMinutes() + offset + 30);
 
-    <script>
+            // Преобразование даты и времени в формат YYYY-MM-DD HH:mm:ss
+            var formattedDateTime = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
-        function cash(){
-            let cash_online = document.getElementById('cash_online')
-            cash_online.style.color = "#f3eeeb";
-            cash_online.style.outline = '1px solid #f3eeeb';
-            let roundd = document.getElementById('roundd')
-            roundd.style.outline = '1px solid #f3eeeb';
-            let cash_online_photo = document.getElementById('cash_online_photo')
-            cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
+            // Установка значения в поле выбора времени
+            inputElement.value = formattedDateTime;
 
-
-
-            let cash = document.getElementById('cash')
-            cash.style.color = "#E1643C";
-            cash.style.outline = '1px solid #E1643C';
-            let roundd_gotiv = document.getElementById('roundd_gotiv')
-            roundd_gotiv.style.outline = '1px solid #E1643C';
-            let cash_photo = document.getElementById('cash_photo')
-            cash_photo.src = "{% static 'store/img/cash_img.png' %}"
+            // Инициализация flatpickr для поля выбора времени
+            flatpickr(inputElement, {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: 'Y-m-d H:i:s',
+                time_24hr: true,
+                minTime: '09:00',
+                maxTime: '23:00',
+                // Другие настройки, если необходимо
+            });
+        </script>
 
 
-            let divilery_cash = document.getElementById('divilery_cash')
-            divilery_cash.style.color = "#f3eeeb";
-            divilery_cash.style.outline = '1px solid #f3eeeb';
-            let roundd_spavtu = document.getElementById('roundd_spavtu')
-            roundd_spavtu.style.outline = '1px solid #f3eeeb';
-            let dilivery_photo = document.getElementById('dilivery_photo')
-            dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
-        }
-        function cash_online() {
-            let cash_online = document.getElementById('cash_online')
-            cash_online.style.color = "#E1643C";
-            cash_online.style.outline = '1px solid #E1643C';
-            let roundd = document.getElementById('roundd')
-            roundd.style.outline = '1px solid #E1643C';
-            let cash_online_photo = document.getElementById('cash_online_photo')
-            cash_online_photo.src = "{% static 'store/img/online_cash_orange.png' %}"
+        <p class="delivery_persons">Кількість персон</p>
+        <input class="delivery_count" type="text" name="delivery_count" placeholder="1" value="1"/>
 
 
+        <p class="oplata_type">Розрахунок</p>
 
-            let cash = document.getElementById('cash')
-            cash.style.color = "#f3eeeb";
-            cash.style.outline = '1px solid #f3eeeb';
-            let roundd_gotiv = document.getElementById('roundd_gotiv')
-            roundd_gotiv.style.outline = '1px solid #f3eeeb';
-            let cash_photo = document.getElementById('cash_photo')
-            cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
+        <div class="button_na_cash">
+            <button class="cash" id="cash" onclick="cash()">
+                <div class="roundd_gotiv" id="roundd_gotiv">
+                    <img src="{% static 'store/img/cash_img_white.png' %}" alt="Изображение" class="cash_img"
+                         id="cash_photo">
+                </div>
+                Готівкою при отриманні
+            </button>
+        </div>
+
+
+        <div class="button_na_cash_online">
+            <button class="cash_online" onclick="add_to_cart()" id="cash_online">
+                <div class="roundd" id="roundd">
+                    <img src="{% static 'store/img/online_cash_orange.png' %}" alt="Изображение" class="cash_img"
+                         id="cash_online_photo">
+                </div>
+                Сплатити онлайн
+            </button>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function add_to_cart() {
+                alert(12344);
+                $.ajax({
+
+                    url: '/add_to_cart/',  // Замените на правильный URL для обработки запроса в вашем приложении
+                    type: 'POST',
+                    dataType: 'json',  // Указываем ожидаемый тип данных в ответе (JSON)
+                    success: function (response) {
+                        // Перенаправление пользователя на страницу оплаты Fondy
+                        window.location.href = response.url;
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        // Обработка ошибки, если необходимо
+                    }
+                });
+            }
+
+        </script>
+
+
+        <div class="button_na_delivery_cash">
+            <button class="delivery_cash" onclick="delivery_cash()" id="divilery_cash">
+                <div class="roundd_spavtu" id="roundd_spavtu">
+                    <img src="{% static 'store/img/cssshh.svg' %}" alt="Изображение" class="cash_img"
+                         id="dilivery_photo">
+                </div>
+                Сплатити картою при отриманні
+            </button>
+
+        </div>
+
+        <script>
+            function cash() {
+                let cash_online = document.getElementById('cash_online')
+                cash_online.style.color = "#f3eeeb";
+                cash_online.style.outline = '1px solid #f3eeeb';
+                let roundd = document.getElementById('roundd')
+                roundd.style.outline = '1px solid #f3eeeb';
+                let cash_online_photo = document.getElementById('cash_online_photo')
+                cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
+
+
+                let cash = document.getElementById('cash')
+                cash.style.color = "#E1643C";
+                cash.style.outline = '1px solid #E1643C';
+                let roundd_gotiv = document.getElementById('roundd_gotiv')
+                roundd_gotiv.style.outline = '1px solid #E1643C';
+                let cash_photo = document.getElementById('cash_photo')
+                cash_photo.src = "{% static 'store/img/cash_img.png' %}"
+
+
                 let divilery_cash = document.getElementById('divilery_cash')
-            divilery_cash.style.color = "#f3eeeb";
-            divilery_cash.style.outline = '1px solid #f3eeeb';
-            let roundd_spavtu = document.getElementById('roundd_spavtu')
-            roundd_spavtu.style.outline = '1px solid #f3eeeb';
-            let dilivery_photo = document.getElementById('dilivery_photo')
-            dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
-        }
-        function delivery_cash(){
-            let cash_online = document.getElementById('cash_online')
-            cash_online.style.color = "#f3eeeb";
-            cash_online.style.outline = '1px solid #f3eeeb';
-            let roundd = document.getElementById('roundd')
-            roundd.style.outline = '1px solid #f3eeeb';
-            let cash_online_photo = document.getElementById('cash_online_photo')
-            cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
+                divilery_cash.style.color = "#f3eeeb";
+                divilery_cash.style.outline = '1px solid #f3eeeb';
+                let roundd_spavtu = document.getElementById('roundd_spavtu')
+                roundd_spavtu.style.outline = '1px solid #f3eeeb';
+                let dilivery_photo = document.getElementById('dilivery_photo')
+                dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
+            }
+
+            function cash_online() {
+                let cash_online = document.getElementById('cash_online')
+                cash_online.style.color = "#E1643C";
+                cash_online.style.outline = '1px solid #E1643C';
+                let roundd = document.getElementById('roundd')
+                roundd.style.outline = '1px solid #E1643C';
+                let cash_online_photo = document.getElementById('cash_online_photo')
+                cash_online_photo.src = "{% static 'store/img/online_cash_orange.png' %}"
 
 
-            let cash = document.getElementById('cash')
-            cash.style.color = "#f3eeeb";
-            cash.style.outline = '1px solid #f3eeeb';
-            let roundd_gotiv = document.getElementById('roundd_gotiv')
-            roundd_gotiv.style.outline = '1px solid #f3eeeb';
-            let cash_photo = document.getElementById('cash_photo')
-            cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
+                let cash = document.getElementById('cash')
+                cash.style.color = "#f3eeeb";
+                cash.style.outline = '1px solid #f3eeeb';
+                let roundd_gotiv = document.getElementById('roundd_gotiv')
+                roundd_gotiv.style.outline = '1px solid #f3eeeb';
+                let cash_photo = document.getElementById('cash_photo')
+                cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
+                let divilery_cash = document.getElementById('divilery_cash')
+                divilery_cash.style.color = "#f3eeeb";
+                divilery_cash.style.outline = '1px solid #f3eeeb';
+                let roundd_spavtu = document.getElementById('roundd_spavtu')
+                roundd_spavtu.style.outline = '1px solid #f3eeeb';
+                let dilivery_photo = document.getElementById('dilivery_photo')
+                dilivery_photo.src = "{% static 'store/img/cssshh.svg' %}"
+            }
+
+            function delivery_cash() {
+                let cash_online = document.getElementById('cash_online')
+                cash_online.style.color = "#f3eeeb";
+                cash_online.style.outline = '1px solid #f3eeeb';
+                let roundd = document.getElementById('roundd')
+                roundd.style.outline = '1px solid #f3eeeb';
+                let cash_online_photo = document.getElementById('cash_online_photo')
+                cash_online_photo.src = "{% static 'store/img/online_cash.png' %}"
 
 
-            let divilery_cash = document.getElementById('divilery_cash')
-            divilery_cash.style.color = "#E1643C";
-            divilery_cash.style.outline = '1px solid #E1643C';
-            let roundd_spavtu = document.getElementById('roundd_spavtu')
-            roundd_spavtu.style.outline = '1px solid #E1643C';
-            let dilivery_photo = document.getElementById('dilivery_photo')
-            dilivery_photo.src = "{% static 'store/img/credit_cart_white.png' %}"
-        }
-    </script>
+                let cash = document.getElementById('cash')
+                cash.style.color = "#f3eeeb";
+                cash.style.outline = '1px solid #f3eeeb';
+                let roundd_gotiv = document.getElementById('roundd_gotiv')
+                roundd_gotiv.style.outline = '1px solid #f3eeeb';
+                let cash_photo = document.getElementById('cash_photo')
+                cash_photo.src = "{% static 'store/img/cash_img_white.png' %}"
 
 
-    <p class="comment_do_zakaza">Коментарій до замовлення</p>
-    <input class="comment_do_zakaza_pole" type="text" placeholder="Ваш коментарій*"/>
+                let divilery_cash = document.getElementById('divilery_cash')
+                divilery_cash.style.color = "#E1643C";
+                divilery_cash.style.outline = '1px solid #E1643C';
+                let roundd_spavtu = document.getElementById('roundd_spavtu')
+                roundd_spavtu.style.outline = '1px solid #E1643C';
+                let dilivery_photo = document.getElementById('dilivery_photo')
+                dilivery_photo.src = "{% static 'store/img/cssshh_orange.svg' %}"
+            }
+        </script>
 
-    <button type="button" class="btn btn-outline-success btn_add_to"
-    >Підтвердити замовлення
-    </button>
 
+        <p class="comment_do_zakaza">Коментарій до замовлення</p>
+        <input class="comment_do_zakaza_pole" name="comment_do_zakaza" type="text" placeholder="Ваш коментарій*"/>
 
-    <div class="form-check checker_zv">
+        <button type="button" class="btn btn-outline-success btn_add_to" onclick="submitOrder()">
+            Підтвердити замовлення
+        </button>
 
-
-        <input class="form-check-input dont_call" type="checkbox" value=""
-               id="flexCheckDefault">
-        <label class="form-check-label txtttt1" for="flexCheckDefault">
-            Мені можна не телефонувати для підтвердження замовлення
-        </label>
+        <div class="form-check checker_zv">
+            <input class="form-check-input dont_call" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label txtttt1" for="flexCheckDefault">
+                Мені можна не телефонувати для підтвердження замовлення
+            </label>
+        </div>
     </div>
+</form>
 
-</div>
+
+<script>
+    function submitOrder() {
+        // Получение формы по ее идентификатору
+        var form = document.getElementById('orderForm');
+
+        // Отправка формы
+        form.submit();
+    }
+</script>
 
 <div class="nuz1">
     <div class="carta_sity">Карта сайту</div>
@@ -336,54 +372,53 @@ flatpickr(inputElement, {
 <script>
 
 
-   $(document).ready(function () {
-  // Скрыть поля адреса при загрузке страницы
-  $(".pickup-info, .pickup-line, .adres_1, .adres_2").hide();
+    $(document).ready(function () {
+        // Скрыть поля адреса при загрузке страницы
+        $(".pickup-info, .pickup-line, .adres_1, .adres_2").hide();
 
-  // По умолчанию выбрана доставка
-  $(".delivery-button").addClass("active").css("color", "white");
-  $(".pickup-button").css("color", "#f3edec");
+        // По умолчанию выбрана доставка
+        $(".delivery-button").addClass("active").css("color", "white");
+        $(".pickup-button").css("color", "#f3edec");
 
-  // Показать поля адреса при открытии страницы, если выбрана доставка
-  if ($(".delivery-button").hasClass("active")) {
-    $(".street, .home_number, .home_gear, .home_room").show();
-  } else {
-    $(".street, .home_number, .home_gear, .home_room").hide();
-  }
+        // Показать поля адреса при открытии страницы, если выбрана доставка
+        if ($(".delivery-button").hasClass("active")) {
+            $(".street, .home_number, .home_gear, .home_room").show();
+        } else {
+            $(".street, .home_number, .home_gear, .home_room").hide();
+        }
 
-  // Обработчик нажатия на кнопку "Доставка"
-  $(".delivery-button").click(function () {
-    if (!$(this).hasClass("active")) {
-      // Показать поля адреса
-      $(".street, .home_number, .home_gear, .home_room").show();
-      // Скрыть информацию о самовывозе и адресах
-      $(".pickup-info, .pickup-line, .adres_1, .adres_2").hide();
-      // Изменить стиль кнопки "Доставка"
-      $(this).addClass("active").css("color", "white");
-      // Изменить стиль кнопки "Самовивіз"
-      $(".pickup-button").removeClass("active").css("color", "#f3edec");
-      // Показать изображение доставки
-      $(".delivery-image").show();
-    }
-  });
+        // Обработчик нажатия на кнопку "Доставка"
+        $(".delivery-button").click(function () {
+            if (!$(this).hasClass("active")) {
+                // Показать поля адреса
+                $(".street, .home_number, .home_gear, .home_room").show();
+                // Скрыть информацию о самовывозе и адресах
+                $(".pickup-info, .pickup-line, .adres_1, .adres_2").hide();
+                // Изменить стиль кнопки "Доставка"
+                $(this).addClass("active").css("color", "white");
+                // Изменить стиль кнопки "Самовивіз"
+                $(".pickup-button").removeClass("active").css("color", "#f3edec");
+                // Показать изображение доставки
+                $(".delivery-image").show();
+            }
+        });
 
-  // Обработчик нажатия на кнопку "Самовивіз"
-  $(".pickup-button").click(function () {
-    if (!$(this).hasClass("active")) {
-      // Скрыть поля адреса
-      $(".street, .home_number, .home_gear, .home_room").hide();
-      // Показать информацию о самовывозе и адресах
-      $(".pickup-info, .pickup-line, .adres_1, .adres_2").show();
-      // Изменить стиль кнопки "Самовивіз"
-      $(this).addClass("active").css("color", "#f3edec");
-      // Изменить стиль кнопки "Доставка"
-      $(".delivery-button").removeClass("active").css("color", "white");
-      // Скрыть изображение доставки
-      $(".delivery-image").hide();
-    }
-  });
-});
-
+        // Обработчик нажатия на кнопку "Самовивіз"
+        $(".pickup-button").click(function () {
+            if (!$(this).hasClass("active")) {
+                // Скрыть поля адреса
+                $(".street, .home_number, .home_gear, .home_room").hide();
+                // Показать информацию о самовывозе и адресах
+                $(".pickup-info, .pickup-line, .adres_1, .adres_2").show();
+                // Изменить стиль кнопки "Самовивіз"
+                $(this).addClass("active").css("color", "#f3edec");
+                // Изменить стиль кнопки "Доставка"
+                $(".delivery-button").removeClass("active").css("color", "white");
+                // Скрыть изображение доставки
+                $(".delivery-image").hide();
+            }
+        });
+    });
 
 
 </script>
