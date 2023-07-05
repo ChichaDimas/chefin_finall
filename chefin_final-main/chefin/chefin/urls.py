@@ -18,4 +18,6 @@ urlpatterns = [
     path('search/', Search.as_view(), name='search'),
 
     path('inform/', inform, name='inform'),
+    path('cart/info/', cart_info, name='cart_info'),
+
 ]

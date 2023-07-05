@@ -177,6 +177,23 @@ def dostavka_ta_oplata(requests):
     return render(requests, 'store/dostavka_ta_oplata.html', context)
 
 
+def cart_info(request):
+    # Получение текущей корзины из сессии пользователя
+    basket = request.session.get('basket', {})
+    basket_items = []
+    for product_id, item in basket.items():
+        item['id'] = product_id
+        basket_items.append(item)
+    print(basket_items)
+
+    # Получение списка значений product_poster из товаров в корзине
+    product_posters = [item['product_poster'] for item in basket_items]
+    print(product_posters)
+
+    # Возврат информации о товарах в корзине в формате JSON
+    return JsonResponse({'items': basket_items, 'product_posters': product_posters})
+
+
 def basket_add(request, product_id):
     # Получение данных из тела запроса
     data = json.loads(request.body)
@@ -186,7 +203,6 @@ def basket_add(request, product_id):
     name = data.get('name')
     image = data.get('image')
     description = data.get('description')
-    print(description)
 
     # Создание JSON-представления товара с комментарием и постером
     product_json = {
@@ -198,37 +214,38 @@ def basket_add(request, product_id):
         'description': description,
     }
 
-    # Получение или инициализация корзины в кеше
+    # Получение или инициализация корзины в сессии пользователя
     basket = request.session.get('basket', {})
 
     # Проверка, что товар уже присутствует в корзине
-    if product_id in basket:
+    if str(product_id) in basket:
         print('есть в корзине')
-        return HttpResponseBadRequest("Product already exists in the basket.")
+        return JsonResponse({'success': False, 'message': 'Product already exists in the basket.'})
 
     # Добавление товара в корзину
-    basket[product_id] = product_json
+    basket[str(product_id)] = product_json
 
-    # Обновление корзины в кеше
+    # Обновление корзины в сессии пользователя
     request.session['basket'] = basket
     request.session.modified = True
 
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return JsonResponse({'success': True})
 
 
 
 def basket_remove(request, product_id):
+    # Получение текущей корзины из сессии пользователя
     basket = request.session.get('basket', {})
 
-
+    # Проверка, что товар с данным ID присутствует в корзине
     if str(product_id) in basket:
         del basket[str(product_id)]
         request.session['basket'] = basket
         request.session.modified = True
 
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return JsonResponse({'success': True})
 
-    return JsonResponse({'success': False})
+    return JsonResponse({'success': False, 'message': 'Product not found in the basket.'})
 
 
 def profile(request):
@@ -245,6 +262,7 @@ def profile(request):
         'mul_price': mul_price,
         'savedValue': 1,
     }
+
     return render(request, 'store/baskets.html', context)
 
 
